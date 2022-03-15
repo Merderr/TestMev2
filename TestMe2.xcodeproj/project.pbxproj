@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8466A0BC27E0F031007A1A77 /* qViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A0BB27E0F031007A1A77 /* qViewController.swift */; };
 		84C54C1C27E0E626009009B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1B27E0E626009009B0 /* AppDelegate.swift */; };
 		84C54C1E27E0E626009009B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1D27E0E626009009B0 /* SceneDelegate.swift */; };
 		84C54C2027E0E626009009B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1F27E0E626009009B0 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8466A0BB27E0F031007A1A77 /* qViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qViewController.swift; sourceTree = "<group>"; };
 		84C54C1827E0E626009009B0 /* TestMe2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMe2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C54C1B27E0E626009009B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C54C1D27E0E626009009B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				84C54C1F27E0E626009009B0 /* ViewController.swift */,
 				84C54C2F27E0E7BB009009B0 /* User.swift */,
 				84C54C2127E0E626009009B0 /* Main.storyboard */,
+				8466A0BB27E0F031007A1A77 /* qViewController.swift */,
 				84C54C3127E0EE3D009009B0 /* Answers.swift */,
 				84C54C2427E0E629009009B0 /* Assets.xcassets */,
 				84C54C2627E0E629009009B0 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 				84C54C3027E0E7BB009009B0 /* User.swift in Sources */,
 				84C54C3427E0EE65009009B0 /* Student.swift in Sources */,
 				84C54C2027E0E626009009B0 /* ViewController.swift in Sources */,
+				8466A0BC27E0F031007A1A77 /* qViewController.swift in Sources */,
 				84C54C1C27E0E626009009B0 /* AppDelegate.swift in Sources */,
 				84C54C3227E0EE3E009009B0 /* Answers.swift in Sources */,
 				84C54C1E27E0E626009009B0 /* SceneDelegate.swift in Sources */,
