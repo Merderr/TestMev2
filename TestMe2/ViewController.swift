@@ -33,8 +33,8 @@ class ViewController: UIViewController {
 }
     
     @IBAction func saveButton(_ sender: Any) {
+        let  Name = name.text! as! NSString
         let  Username = username.text! as! NSString
-                let  Name = name.text! as! NSString
                 let  Pass = password.text as! NSString
                 let  Sub = subscription.text as! NSString
                 var stmt : OpaquePointer?
@@ -49,6 +49,21 @@ class ViewController: UIViewController {
                     print(err)
                     
                 }
+        if sqlite3_bind_text(stmt, 2, Username.utf8String, -1, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        if sqlite3_bind_text(stmt, 3, Pass.utf8String, -1, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        if sqlite3_bind_text(stmt, 4, Sub.utf8String, -1, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
                 if sqlite3_step(stmt) != SQLITE_DONE {
                     let err = String(cString: sqlite3_errmsg(db)!)
                     print(err)
