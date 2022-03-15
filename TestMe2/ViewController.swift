@@ -9,7 +9,6 @@ import UIKit
 import SQLite3
 
 class ViewController: UIViewController {
-
     
     @IBOutlet weak var subscription: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -32,7 +31,6 @@ class ViewController: UIViewController {
             print("no error",err)
         }
 }
-    
     
     @IBAction func saveButton(_ sender: Any) {
         let  Username = username.text! as! NSString
