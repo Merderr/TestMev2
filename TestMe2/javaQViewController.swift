@@ -8,7 +8,7 @@
 import UIKit
 import SQLite3
 
-class qViewController: UIViewController {
+class javaQViewController: UIViewController {
 
     @IBOutlet weak var AnsA: UILabel!
     @IBOutlet weak var AnsB: UILabel!

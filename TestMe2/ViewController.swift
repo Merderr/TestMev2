@@ -104,14 +104,14 @@ class ViewController: UIViewController {
     
     
     @IBAction func userView(_ sender: Any) {
-        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! NextViewContoller
-        self.presentedViewController(nextViewController, animated: true, completion: nil)
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! userViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
     
     @IBAction func adminView(_ sender: Any) {
-        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "adminView") as! NextViewContoller
-        self.presentedViewController(nextViewController, animated: true, completion: nil)
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "adminView") as! adminViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
 }
 
