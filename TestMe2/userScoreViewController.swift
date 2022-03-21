@@ -8,7 +8,7 @@
 import UIKit
 
 class userScoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var userScoreTable: UITableView!
     
     let cellReuseIdentifier = "cell"
@@ -44,4 +44,4 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
 }
-    
+

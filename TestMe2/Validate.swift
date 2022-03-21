@@ -7,6 +7,7 @@
 
 import Foundation
 import Foundation
+
 class Validate {
     func validation(email: String, user: String, pass: String, fname: String, lname: String) -> Bool {
         if (email != "") && (user != "") && (pass != "") && (fname != "") && (lname != "") {

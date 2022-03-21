@@ -9,7 +9,7 @@ import UIKit
 import SQLite3
 
 class swiftQViewController: UIViewController {
-
+    
     @IBOutlet weak var testQuestion: UILabel!
     @IBOutlet weak var AnsACheckBox: UIButton!
     @IBOutlet weak var AnsBCheckBox: UIButton!
@@ -20,8 +20,8 @@ class swiftQViewController: UIViewController {
     @IBOutlet weak var AnsC: UILabel!
     @IBOutlet weak var AnsD: UILabel!
     var db : OpaquePointer?
-    var stuList = [Student]()
-    var ansList = [Answers]()
+    var stuList = [User]()
+    var ansList = [Questions]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class swiftQViewController: UIViewController {
         }
         
     }
-
+    
     @IBAction func ViewQuestion(_ sender: Any) {
         
         stuList.removeAll()
@@ -54,7 +54,7 @@ class swiftQViewController: UIViewController {
             let ansB = String(cString: sqlite3_column_text(stmt, 3))
             let ansC = String(cString: sqlite3_column_text(stmt, 4))
             let ansD = String(cString: sqlite3_column_text(stmt, 5))
-            ansList.append(Answers(questionNumber: Int(number), questionText: question, questionChoiceA: ansA, questionChoiceB: ansB, questionChoiceC: ansC, questionChoiceD: ansD))
+            ansList.append(Questions(questionNumber: "test1", questionText: question, questionChoiceA: ansA, questionChoiceB: ansB, questionChoiceC: ansC, questionChoiceD: ansD, questionAnswer: "test2"))
             testQuestion.text! = question
             AnsA.text! = ansA
             AnsB.text! = ansB

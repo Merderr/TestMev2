@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84505FD327E8E90A0054094A /* FeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84505FD227E8E90A0054094A /* FeedBackViewController.swift */; };
+		84505FD527E8EA520054094A /* userLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84505FD427E8EA520054094A /* userLoginViewController.swift */; };
 		8466A0BC27E0F031007A1A77 /* javaQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A0BB27E0F031007A1A77 /* javaQViewController.swift */; };
 		8466A0DE27E22035007A1A77 /* userViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A0DD27E22035007A1A77 /* userViewController.swift */; };
 		8466A0E027E22082007A1A77 /* adminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A0DF27E22082007A1A77 /* adminViewController.swift */; };
@@ -18,6 +20,7 @@
 		8466A13F27E28325007A1A77 /* TestMe2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A13E27E28325007A1A77 /* TestMe2UITestsLaunchTests.swift */; };
 		8466A14727E38BDF007A1A77 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A14527E38BCC007A1A77 /* Validate.swift */; };
 		8466A18727E7EFBC007A1A77 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A18627E7EFBC007A1A77 /* DBHelper.swift */; };
+		8498E5AF27E9345700AD2E97 /* adminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498E5AE27E9345700AD2E97 /* adminLoginViewController.swift */; };
 		84C54C1C27E0E626009009B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1B27E0E626009009B0 /* AppDelegate.swift */; };
 		84C54C1E27E0E626009009B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1D27E0E626009009B0 /* SceneDelegate.swift */; };
 		84C54C2027E0E626009009B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1F27E0E626009009B0 /* ViewController.swift */; };
@@ -26,7 +29,6 @@
 		84C54C2827E0E629009009B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C54C2627E0E629009009B0 /* LaunchScreen.storyboard */; };
 		84C54C3027E0E7BB009009B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C2F27E0E7BB009009B0 /* User.swift */; };
 		84C54C3227E0EE3E009009B0 /* Answers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C3127E0EE3D009009B0 /* Answers.swift */; };
-		84C54C3427E0EE65009009B0 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C3327E0EE65009009B0 /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84505FD227E8E90A0054094A /* FeedBackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackViewController.swift; sourceTree = "<group>"; };
+		84505FD427E8EA520054094A /* userLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLoginViewController.swift; sourceTree = "<group>"; };
 		8466A0BB27E0F031007A1A77 /* javaQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = javaQViewController.swift; sourceTree = "<group>"; };
 		8466A0DD27E22035007A1A77 /* userViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userViewController.swift; sourceTree = "<group>"; };
 		8466A0DF27E22082007A1A77 /* adminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adminViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		8466A13E27E28325007A1A77 /* TestMe2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMe2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8466A14527E38BCC007A1A77 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		8466A18627E7EFBC007A1A77 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		8498E5AE27E9345700AD2E97 /* adminLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adminLoginViewController.swift; sourceTree = "<group>"; };
 		84C54C1827E0E626009009B0 /* TestMe2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMe2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C54C1B27E0E626009009B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C54C1D27E0E626009009B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +75,6 @@
 		84C54C2927E0E629009009B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C54C2F27E0E7BB009009B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84C54C3127E0EE3D009009B0 /* Answers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answers.swift; sourceTree = "<group>"; };
-		84C54C3327E0EE65009009B0 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,11 +144,13 @@
 			children = (
 				8466A14527E38BCC007A1A77 /* Validate.swift */,
 				84C54C1B27E0E626009009B0 /* AppDelegate.swift */,
-				84C54C3327E0EE65009009B0 /* Student.swift */,
 				84C54C1D27E0E626009009B0 /* SceneDelegate.swift */,
 				84C54C1F27E0E626009009B0 /* ViewController.swift */,
 				84C54C2F27E0E7BB009009B0 /* User.swift */,
 				84C54C2127E0E626009009B0 /* Main.storyboard */,
+				8498E5AE27E9345700AD2E97 /* adminLoginViewController.swift */,
+				84505FD427E8EA520054094A /* userLoginViewController.swift */,
+				84505FD227E8E90A0054094A /* FeedBackViewController.swift */,
 				8466A0E527E251AB007A1A77 /* userScoreViewController.swift */,
 				8466A0E327E24F02007A1A77 /* cplusplusViewController.swift */,
 				8466A0E127E24975007A1A77 /* swiftQViewController.swift */,
@@ -309,19 +315,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C54C3027E0E7BB009009B0 /* User.swift in Sources */,
+				84505FD327E8E90A0054094A /* FeedBackViewController.swift in Sources */,
 				8466A0DE27E22035007A1A77 /* userViewController.swift in Sources */,
 				8466A0E627E251AB007A1A77 /* userScoreViewController.swift in Sources */,
 				8466A18727E7EFBC007A1A77 /* DBHelper.swift in Sources */,
-				84C54C3427E0EE65009009B0 /* Student.swift in Sources */,
 				84C54C2027E0E626009009B0 /* ViewController.swift in Sources */,
 				8466A0E427E24F02007A1A77 /* cplusplusViewController.swift in Sources */,
 				8466A0BC27E0F031007A1A77 /* javaQViewController.swift in Sources */,
 				84C54C1C27E0E626009009B0 /* AppDelegate.swift in Sources */,
 				84C54C3227E0EE3E009009B0 /* Answers.swift in Sources */,
+				8498E5AF27E9345700AD2E97 /* adminLoginViewController.swift in Sources */,
 				84C54C1E27E0E626009009B0 /* SceneDelegate.swift in Sources */,
 				8466A0E227E24975007A1A77 /* swiftQViewController.swift in Sources */,
 				8466A0E027E22082007A1A77 /* adminViewController.swift in Sources */,
 				8466A14727E38BDF007A1A77 /* Validate.swift in Sources */,
+				84505FD527E8EA520054094A /* userLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

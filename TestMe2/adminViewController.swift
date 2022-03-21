@@ -9,12 +9,12 @@ import UIKit
 import UserNotifications
 
 class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
     }
-
+    
     @IBAction func sendNotif(_ sender: Any) {
         UNUserNotificationCenter.current().getNotificationSettings{ notifS in
             switch notifS.authorizationStatus {

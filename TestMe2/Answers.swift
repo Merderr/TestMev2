@@ -1,22 +1,23 @@
 //
 //  Answers.swift
-//  TestMe2
+//  TestMeApp
 //
 //  Created by Stan Shockley on 3/15/22.
 //
 
 import Foundation
 
-class Answers {
+class Questions {
     
-    var questionNumber : Int = 0
+    var questionNumber : String = ""
     var questionText : String = ""
     var questionChoiceA : String = ""
     var questionChoiceB : String = ""
     var questionChoiceC : String = ""
     var questionChoiceD : String = ""
+    var questionAnswer : String = ""
     
-    init(questionNumber : Int, questionText : String, questionChoiceA : String, questionChoiceB : String, questionChoiceC : String, questionChoiceD : String){
+    init(questionNumber : String, questionText : String, questionChoiceA : String, questionChoiceB : String, questionChoiceC : String, questionChoiceD : String, questionAnswer : String){
         
         self.questionNumber = questionNumber
         self.questionText = questionText
@@ -24,6 +25,8 @@ class Answers {
         self.questionChoiceB = questionChoiceB
         self.questionChoiceC = questionChoiceC
         self.questionChoiceD = questionChoiceD
+        self.questionAnswer = questionAnswer
+        
         
     }
 }
