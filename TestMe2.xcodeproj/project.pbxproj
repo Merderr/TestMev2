@@ -16,6 +16,8 @@
 		8466A13027E28314007A1A77 /* TestMe2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A12F27E28314007A1A77 /* TestMe2Tests.swift */; };
 		8466A13D27E28325007A1A77 /* TestMe2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A13C27E28325007A1A77 /* TestMe2UITests.swift */; };
 		8466A13F27E28325007A1A77 /* TestMe2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A13E27E28325007A1A77 /* TestMe2UITestsLaunchTests.swift */; };
+		8466A14727E38BDF007A1A77 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A14527E38BCC007A1A77 /* Validate.swift */; };
+		8466A18727E7EFBC007A1A77 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466A18627E7EFBC007A1A77 /* DBHelper.swift */; };
 		84C54C1C27E0E626009009B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1B27E0E626009009B0 /* AppDelegate.swift */; };
 		84C54C1E27E0E626009009B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1D27E0E626009009B0 /* SceneDelegate.swift */; };
 		84C54C2027E0E626009009B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C54C1F27E0E626009009B0 /* ViewController.swift */; };
@@ -56,6 +58,8 @@
 		8466A13A27E28325007A1A77 /* TestMe2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestMe2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8466A13C27E28325007A1A77 /* TestMe2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMe2UITests.swift; sourceTree = "<group>"; };
 		8466A13E27E28325007A1A77 /* TestMe2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMe2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8466A14527E38BCC007A1A77 /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		8466A18627E7EFBC007A1A77 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		84C54C1827E0E626009009B0 /* TestMe2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMe2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C54C1B27E0E626009009B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C54C1D27E0E626009009B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		84C54C1A27E0E626009009B0 /* TestMe2 */ = {
 			isa = PBXGroup;
 			children = (
+				8466A14527E38BCC007A1A77 /* Validate.swift */,
 				84C54C1B27E0E626009009B0 /* AppDelegate.swift */,
 				84C54C3327E0EE65009009B0 /* Student.swift */,
 				84C54C1D27E0E626009009B0 /* SceneDelegate.swift */,
@@ -147,6 +152,7 @@
 				8466A0DD27E22035007A1A77 /* userViewController.swift */,
 				8466A0BB27E0F031007A1A77 /* javaQViewController.swift */,
 				84C54C3127E0EE3D009009B0 /* Answers.swift */,
+				8466A18627E7EFBC007A1A77 /* DBHelper.swift */,
 				84C54C2427E0E629009009B0 /* Assets.xcassets */,
 				84C54C2627E0E629009009B0 /* LaunchScreen.storyboard */,
 				84C54C2927E0E629009009B0 /* Info.plist */,
@@ -305,6 +311,7 @@
 				84C54C3027E0E7BB009009B0 /* User.swift in Sources */,
 				8466A0DE27E22035007A1A77 /* userViewController.swift in Sources */,
 				8466A0E627E251AB007A1A77 /* userScoreViewController.swift in Sources */,
+				8466A18727E7EFBC007A1A77 /* DBHelper.swift in Sources */,
 				84C54C3427E0EE65009009B0 /* Student.swift in Sources */,
 				84C54C2027E0E626009009B0 /* ViewController.swift in Sources */,
 				8466A0E427E24F02007A1A77 /* cplusplusViewController.swift in Sources */,
@@ -314,6 +321,7 @@
 				84C54C1E27E0E626009009B0 /* SceneDelegate.swift in Sources */,
 				8466A0E227E24975007A1A77 /* swiftQViewController.swift in Sources */,
 				8466A0E027E22082007A1A77 /* adminViewController.swift in Sources */,
+				8466A14727E38BDF007A1A77 /* Validate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
