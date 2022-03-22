@@ -182,15 +182,25 @@
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f6T-gt-VBE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IB-K8-dDk" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="71" y="668" width="279" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="loginfb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9D9-6P-Rax"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="tintColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="no9-Cn-8SQ"/>
                     <connections>
                         <outlet property="Fname" destination="vEy-XR-Uag" id="eMg-RF-25l"/>
                         <outlet property="Lname" destination="daY-1L-Ldh" id="zUd-Hq-DmP"/>
                         <outlet property="email" destination="Uej-lm-KHw" id="5VZ-7c-7Ie"/>
+                        <outlet property="lgbtn" destination="9IB-K8-dDk" id="y9g-2A-t2E"/>
                         <outlet property="password" destination="Rig-1x-mT2" id="JTX-Dm-X83"/>
                         <outlet property="username" destination="cXo-0k-HLT" id="d2H-hN-qa7"/>
                     </connections>
@@ -896,13 +906,15 @@ EHZpZXdRdWVzdGlvbg
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GQj-54-7Fz"/>
         <segue reference="e5D-5l-v1x"/>
-        <segue reference="UDC-Zy-N18"/>
+        <segue reference="Wbx-gc-Cje"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

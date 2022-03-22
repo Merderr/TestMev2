@@ -7,8 +7,9 @@
 
 import UIKit
 import SQLite3
+import FBSDKLoginKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LoginButtonDelegate {
     
     
     @IBOutlet weak var Lname: UITextField!
@@ -16,12 +17,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var lgbtn: FBLoginButton!
     
     var db : OpaquePointer?
     var UserList = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let token = AccessToken.current, !token.isExpired{
+            let token = token.tokenString
+            
+            let req = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email,name"], tokenString: token, version: nil, httpMethod: .get)
+            req.start{
+                conne, result, error in
+                print(result)
+            }
+        } else {
+            //let loginbtn = FBLoginButton()
+            //loginbtn.center = view.center
+            //view.addSubview(loginbtn)
+            self.lgbtn.delegate = self
+            lgbtn.permissions = ["public_public", "email"]
+        }
         let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
         print("db path is ", fileP)
         
@@ -38,9 +55,6 @@ class ViewController: UIViewController {
             print("no error",err)
         }
     }
-    
-    
-    
     
     @IBAction func saveButton(_ sender: Any) {
         
@@ -118,6 +132,23 @@ class ViewController: UIViewController {
      print("id is", list.ID,"name is", list.Name,"Username is", list.Username,"Password is", list.Password,"Subscription is", list.Subscription)
      }
      }*/
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+    }
+
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        let token = result?.token?.tokenString
+        
+        let req = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields": "email,name"], tokenString: token, version: nil, httpMethod: .get)
+        req.start{
+            conne, result, error in
+            print(result)
+        }
+    }
+    
+    @IBAction func loginfb(_ sender: Any) {
+    }
+    
     
     @IBAction func userView(_ sender: Any) {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userLoginView") as! userLoginViewController
