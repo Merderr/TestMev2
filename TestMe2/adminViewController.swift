@@ -10,6 +10,7 @@ import UserNotifications
 
 class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
     
+    @IBOutlet weak var userToBlock: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
@@ -60,4 +61,13 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userScore") as! userScoreViewController
         self.present(nextViewController, animated: true, completion: nil)
     }
-}
+    
+    
+    @IBAction func blockUser(_ sender: Any) {
+        //if(userToBlock.text == username){
+            
+        //} else {
+            print("Invalid user")
+        }
+    }
+

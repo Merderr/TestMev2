@@ -9,6 +9,11 @@ import UIKit
 
 class adminLoginViewController: UIViewController {
     
+    
+    @IBOutlet weak var tempAdminUsername: UITextField!
+    @IBOutlet weak var tempAdminPass: UITextField!
+    var adminUser = "admin"
+    var adminPass = "adminpass"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,14 +21,13 @@ class adminLoginViewController: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func adminLogin(_ sender: Any) {
+        if (tempAdminPass.text == adminPass) && (tempAdminUsername.text == adminUser){
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "adminView") as! adminViewController
+        self.present(nextViewController, animated: true, completion: nil)
+        } else {
+            print("Wrong credentials")
+        }
+    }
     
 }

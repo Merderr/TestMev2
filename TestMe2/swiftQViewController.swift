@@ -73,7 +73,6 @@ class swiftQViewController: UIViewController {
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        //q1 = 1
     }
     
     @IBAction func SelectAnsB(_ sender: Any) {
