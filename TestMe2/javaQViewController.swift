@@ -10,6 +10,7 @@ import SQLite3
 
 class javaQViewController: UIViewController {
     
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var NumberLabel: UILabel!
     @IBOutlet weak var AnsA: UILabel!
     @IBOutlet weak var AnsB: UILabel!
@@ -32,6 +33,8 @@ class javaQViewController: UIViewController {
     var quesList = [Questions]()
     var questionAnswer : String = ""
     var questionNumber : String = ""
+    var countdownTimer: Timer!
+    var totalTime = 1800
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,7 @@ class javaQViewController: UIViewController {
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         
+        startTimer()
     }
     @IBAction func SelectAnsA(_ sender: Any) {
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
@@ -188,5 +192,32 @@ class javaQViewController: UIViewController {
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
     }
+    
+    func startTimer() {
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+
+    @objc func updateTime() {
+        timerLabel.text = "\(timeFormatted(totalTime))"
+
+        if totalTime != 0 {
+            totalTime -= 1
+        } else {
+            endTimer()
+        }
+    }
+
+    func endTimer() {
+        countdownTimer.invalidate()
+    }
+
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        //     let hours: Int = totalSeconds / 3600
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+
     
 }

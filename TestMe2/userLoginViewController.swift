@@ -90,9 +90,8 @@ class userLoginViewController: UIViewController {
             print(err)
         }
 
-        loginuser.text = ""
-        loginpass.text = ""
         subSwitch.isOn = false
+        
 
         let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"
 
@@ -113,10 +112,41 @@ class userLoginViewController: UIViewController {
             let qNum = sqlite3_column_int(stmt, 7)
             
             userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), questionNumber: Int(qNum)))
+
         }
         for list in userList {
             print("id is", list.ID,"name is", list.Username!,"password is", list.Password!)
+            if (loginuser.text == list.Username!) && (loginpass.text == list.Password!){
+                let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! userViewController
+                self.present(nextViewController, animated: true, completion: nil)
+            } else if (loginuser.text == list.Username!) && (loginpass.text != list.Password!){
+                var dialogMessage = UIAlertController(title: "Attention", message: "Invalid password, please check and try again.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler:  {
+                    (action) -> Void in
+                    print("Ok button tapped")
+                })
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+            } else if (loginuser.text != list.Username!) && (loginpass.text == list.Password!){
+                var dialogMessage = UIAlertController(title: "Attention", message: "Invalid username, please check and try again.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler:  {
+                    (action) -> Void in
+                    print("Ok button tapped")
+                })
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+            } else {
+                var dialogMessage = UIAlertController(title: "Attention", message: "Invalid username and password, please check and try again.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler:  {
+                    (action) -> Void in
+                    print("Ok button tapped")
+                })
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+            }
+                
         }
+
         }
     }
 }
