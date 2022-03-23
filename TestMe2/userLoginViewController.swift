@@ -15,35 +15,17 @@ class userLoginViewController: UIViewController {
 
     @IBOutlet weak var loginuser: UITextField!
     @IBOutlet weak var loginpass: UITextField!
-    @IBOutlet weak var subSwitch: UISwitch!
-    @IBOutlet weak var subLabel: UILabel!
-    @IBAction func subCheck(_ sender: Any) {
-        updateSwitch()
-        var isSubscribed: Int = 0
-        if subSwitch.isOn{
-            isSubscribed = 1
-        } else{
-            isSubscribed = 0
-        }
-    }
-        
-    func updateSwitch(){
-        if subSwitch.isOn{
-            subLabel.text = "Subscribed"
-        } else{
-            subLabel.text = "Unsubscribed"
-        }
-    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
-            print("db path is ", fileP)
-
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("projectDB.sqllite")
+        print("db path is ", fileP)
+        
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{
             print("cant open data base")
         }
-
+        
         if sqlite3_exec(db, "create table if not exists User (ID integer primary key autoincrement,Fname text,Lname text, Email text,Username text, Password Text, Subscription integer)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
@@ -55,20 +37,20 @@ class userLoginViewController: UIViewController {
     }
 
     @IBAction func loginButton(_ sender: Any) {
-    let  tempUser = loginuser.text! as! NSString
-    let  tempPass = loginpass.text! as! NSString
-    let  subsc = subSwitch.isOn as! NSNumber
+        let  tempUser = loginuser.text! as! NSString
+        let  tempPass = loginpass.text! as! NSString
+        if tempUser == "" || tempPass == ""{
+            print("empty input fields")
+        }
+        else{
+        //if blank fields
+        //if info not in database
+        //else do the stuff
         
-    if tempUser == "" || tempPass == ""{
-        print("empty input fields")
-    } else{
-    //if blank fields
-    //if info not in database
-    //else do the stuff
-
+        
         var stmt : OpaquePointer?
         let loginquery = "insert into TempVariables (tempUser, tempPass) values (?,?)"
-
+        
         if sqlite3_prepare_v2(db,loginquery,-1,&stmt,nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
@@ -76,21 +58,21 @@ class userLoginViewController: UIViewController {
         if sqlite3_bind_text(stmt, 1, tempUser.utf8String, -1, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
+            
         }
-        if sqlite3_bind_text(stmt, 2, tempPass.utf8String, -1, nil) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print(err)
-        }
+if sqlite3_bind_text(stmt, 2, tempPass.utf8String, -1, nil) != SQLITE_OK {
+    let err = String(cString: sqlite3_errmsg(db)!)
+    print(err)
+        
+}
         if sqlite3_step(stmt) != SQLITE_DONE {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
+            
         }
-        if sqlite3_bind_int(stmt, 6, Int32(subsc.uint32Value)) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print(err)
-        }
-
-        subSwitch.isOn = false
+        
+        loginuser.text = ""
+        loginpass.text = ""
         
 
         let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"
@@ -150,3 +132,4 @@ class userLoginViewController: UIViewController {
         }
     }
 }
+

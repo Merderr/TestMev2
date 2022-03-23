@@ -12,6 +12,30 @@ import FBSDKLoginKit
 class ViewController: UIViewController, LoginButtonDelegate {
     
     
+    
+    @IBAction func subCheck(_ sender: Any) {
+        updateSwitch()
+        var isSubscribed: Int = 0
+        
+        if subSwitch.isOn{
+            isSubscribed = 1
+        }
+        else{
+            isSubscribed = 0
+        }
+    }
+    func updateSwitch(){
+        if subSwitch.isOn{
+            subLabel.text = "Subscribed"
+        }
+        else{
+            subLabel.text = "Unsubscribed"
+        }
+        
+    }
+   
+    @IBOutlet weak var subSwitch: UISwitch!
+    @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var Lname: UITextField!
     @IBOutlet weak var Fname: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -39,7 +63,7 @@ class ViewController: UIViewController, LoginButtonDelegate {
             self.lgbtn.delegate = self
             lgbtn.permissions = ["public_public", "email"]
         }
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("projectDB.sqllite")
         print("db path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{
@@ -68,18 +92,19 @@ class ViewController: UIViewController, LoginButtonDelegate {
         let  mail = email.text! as! NSString
         let  usern = username.text! as! NSString
         let  passw = password.text as! NSString
-        var stmt : OpaquePointer?
-        let query = "insert into User (Fname, Lname, Email, Username, Password, Subscription) values (?,?,?,?,?,?)"
-        
-        if sqlite3_prepare_v2(db,query,-1,&stmt,nil) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print(err)
-        }
-        if sqlite3_bind_text(stmt, 1, firstn.utf8String, -1, nil) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print(err)
-            
-        }
+        let  subsc = subSwitch.isOn as! NSNumber
+                var stmt : OpaquePointer?
+                let query = "insert into User (Fname, Lname, Email, Username, Password, Subscription) values (?,?,?,?,?,?)"
+                
+                if sqlite3_prepare_v2(db,query,-1,&stmt,nil) != SQLITE_OK {
+                    let err = String(cString: sqlite3_errmsg(db)!)
+                    print(err)
+                }
+                if sqlite3_bind_text(stmt, 1, firstn.utf8String, -1, nil) != SQLITE_OK {
+                    let err = String(cString: sqlite3_errmsg(db)!)
+                    print(err)
+                    
+                }
         if sqlite3_bind_text(stmt, 2, lastn.utf8String, -1, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
@@ -100,43 +125,33 @@ class ViewController: UIViewController, LoginButtonDelegate {
             print(err)
             
         }
-        if sqlite3_step(stmt) != SQLITE_DONE {
+        if sqlite3_bind_int(stmt, 6, Int32(subsc.uint32Value)) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
             
         }
+                if sqlite3_step(stmt) != SQLITE_DONE {
+                    let err = String(cString: sqlite3_errmsg(db)!)
+                    print(err)
+                    
+                }
         Fname.text = ""
         Lname.text = ""
         email.text = ""
-        username.text = ""
-        password.text = ""
-        print("data saved")
-    }
+                username.text = ""
+                password.text = ""
+        subSwitch.isOn = false
+                print("data saved")
+            }
     
-    /*@IBAction func viewButton(_ sender: Any) {
-     UserList.removeAll()
-     let query = "select * from User"
-     var stmt : OpaquePointer?
-     
-     if sqlite3_prepare(db, query, -2, &stmt, nil) != SQLITE_OK{
-     let err = String(cString: sqlite3_errmsg(db)!)
-     print(err)
-     return
-     }
-     while(sqlite3_step(stmt) == SQLITE_ROW){
-     let ID = sqlite3_column_int(stmt, 0)
-     let Name = String(cString: sqlite3_column_text(stmt, 1))
-     let Username = String(cString: sqlite3_column_text(stmt, 2))
-     let Password = String(cString: sqlite3_column_text(stmt, 3))
-     let Subscription = sqlite3_column_int(stmt, 4)
-     UserList.append(User(ID: Int(ID), Name: Name, Username: Username, Password: Password, Subscription: Int(Subscription)))
-     
-     
-     }
-     for list in UserList {
-     print("id is", list.ID,"name is", list.Name,"Username is", list.Username,"Password is", list.Password,"Subscription is", list.Subscription)
-     }
-     }*/
+    
+    
+    
+    
+    
+    
+    
+    
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
     }
@@ -166,4 +181,6 @@ class ViewController: UIViewController, LoginButtonDelegate {
         self.present(nextViewController, animated: true, completion: nil)
     }
 }
+
+
 
