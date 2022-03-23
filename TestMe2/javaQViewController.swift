@@ -39,7 +39,7 @@ class javaQViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
         print("Database path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {
@@ -53,6 +53,11 @@ class javaQViewController: UIViewController {
     
     
     @IBAction func ViewQuestion(_ sender: Any) {
+        
+//        var i : Int = 0
+//        var j = Int(NumberLabel.text!)
+//        i = j!
+//        i+=1
         
         stuList.removeAll()
         let query = "select * from Questions where Number = 1"
@@ -93,7 +98,7 @@ class javaQViewController: UIViewController {
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        //q1 = 1
+        questionAnswer = "A"
     }
     
     @IBAction func SelectAnsB(_ sender: Any) {
@@ -101,39 +106,48 @@ class javaQViewController: UIViewController {
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "B"
     }
     @IBAction func SelectAnsC(_ sender: Any) {
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "C"
     }
     @IBAction func SelectAnsD(_ sender: Any) {
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "D"
     }
     
     @IBAction func saveAnswer(_ sender: Any) {
         
+        let quiz = "Java" as! NSString
         let numLabel = NumberLabel.text! as! NSString
         //let n = questionNumber as! NSString
         let qA = questionAnswer as! NSString
         var stmt : OpaquePointer?
-        let query = "insert into Answers (QuestionNumber, QuestionAnswer) values (?,?)"
+        let query = "insert into Answers (Quiz, QuestionNumber, QuestionAnswer) values (?,?,?)"
         
         if sqlite3_prepare_v2(db, query, -1, &stmt, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is a prepare error", err)
         }
         
-        if sqlite3_bind_text(stmt, 1, numLabel.utf8String, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 1, quiz.utf8String, -1, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is a bind error", err)
         }
         
-        if sqlite3_bind_text(stmt, 2, qA.utf8String, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(stmt, 2, numLabel.utf8String, -1, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is a bind error", err)
+        }
+        
+        if sqlite3_bind_text(stmt, 3, qA.utf8String, -1, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is a bind error", err)
         }
