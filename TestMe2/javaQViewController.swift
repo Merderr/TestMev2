@@ -36,7 +36,7 @@ class javaQViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TestMeAppDB.sqlite")
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
         print("Database path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {
@@ -52,7 +52,7 @@ class javaQViewController: UIViewController {
     @IBAction func ViewQuestion(_ sender: Any) {
         
         stuList.removeAll()
-        let query = "select * from Questions"
+        let query = "select * from Questions where Number = 1"
         var stmt : OpaquePointer?
         
         if sqlite3_prepare_v2(db, query, -2, &stmt, nil) != SQLITE_OK {
@@ -62,13 +62,15 @@ class javaQViewController: UIViewController {
         }
         
         while(sqlite3_step(stmt) == SQLITE_ROW) {
-            let number = sqlite3_column_int(stmt, 0)
+            let number = String(sqlite3_column_int(stmt, 0))
             let question = String(cString: sqlite3_column_text(stmt, 1))
             let ansA = String(cString: sqlite3_column_text(stmt, 2))
             let ansB = String(cString: sqlite3_column_text(stmt, 3))
             let ansC = String(cString: sqlite3_column_text(stmt, 4))
             let ansD = String(cString: sqlite3_column_text(stmt, 5))
-            quesList.append(Questions(questionNumber: "test1", questionText: question, questionChoiceA: ansA, questionChoiceB: ansB, questionChoiceC: ansC, questionChoiceD: ansD, questionAnswer: "test"))
+            let qAns = String(cString: sqlite3_column_text(stmt, 6))
+            quesList.append(Questions(questionNumber: number, questionText: question, questionChoiceA: ansA, questionChoiceB: ansB, questionChoiceC: ansC, questionChoiceD: ansD, questionAnswer: qAns))
+            NumberLabel.text! = number
             testQuestion.text! = question
             AnsA.text! = ansA
             AnsB.text! = ansB
@@ -185,7 +187,6 @@ class javaQViewController: UIViewController {
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        
     }
     
 }

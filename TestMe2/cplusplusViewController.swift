@@ -26,7 +26,7 @@ class cplusplusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TestMeAppDB.sqlite")
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("TestMeAppQuestionsDB.sqlite")
         print("Database path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {

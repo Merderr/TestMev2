@@ -37,7 +37,7 @@ class userLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("ProjectDB.sqllite")
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
             print("db path is ", fileP)
 
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{

@@ -17,7 +17,7 @@ class DBHelper
     }
     
     let dbPath: String = "myDb.sqlite"
-    var db:OpaquePointer?
+    var db: OpaquePointer?
     
     func openDatabase() -> OpaquePointer?
     {

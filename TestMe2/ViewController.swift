@@ -54,6 +54,11 @@ class ViewController: UIViewController, LoginButtonDelegate {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
+        if sqlite3_exec(db, "create table if not exists Questions (q1 text, q2 text, q3 text, q4 text, q5 text)", nil, nil, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("no error",err)
+        }
+    
     }
     
     @IBAction func saveButton(_ sender: Any) {
