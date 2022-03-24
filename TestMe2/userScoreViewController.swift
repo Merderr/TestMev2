@@ -36,7 +36,7 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
             let name = String(cString: sqlite3_column_text(stmt, 1))
-            print("id:\(id) name:\(name)")
+            user.append(User(ID: Int(id), Email: "", FirstName: "", LastName: "", Username: name, Password: "", Subscription: 0))
         }
         
         self.userScoreTable.reloadData()

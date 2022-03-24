@@ -98,7 +98,7 @@ class DBHelper
                 let userName = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
                 let pass = String(describing: String(cString: sqlite3_column_text(queryStatement, 5)))
                 let sub = sqlite3_column_int(queryStatement, 6)
-                psns.append(User(ID: Int(id), Email: String(email), FirstName: String(fName), LastName: String(lName), Username: String(userName), Password: String(pass), Subscription: Int(sub), questionNumber: 0))
+                psns.append(User(ID: Int(id), Email: String(email), FirstName: String(fName), LastName: String(lName), Username: String(userName), Password: String(pass), Subscription: Int(sub)))
                 print("Query Result:")
                 print("\(id) | \(email) | \(sub)")
             }

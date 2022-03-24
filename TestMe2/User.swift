@@ -15,10 +15,9 @@ class User{
     var Username : String?
     var Password : String?
     var Subscription : Int
-    var questionNumber : Int = 0
     
     
-    init(ID: Int , Email : String ,FirstName : String ,LastName : String , Username : String , Password : String , Subscription : Int, questionNumber : Int){
+    init(ID: Int , Email : String ,FirstName : String ,LastName : String , Username : String , Password : String , Subscription : Int){
         self.ID = ID
         self.Email = Email
         self.FirstName = FirstName
@@ -26,6 +25,5 @@ class User{
         self.Username = Username
         self.Password = Password
         self.Subscription = Subscription
-        self.questionNumber = questionNumber
     }
 }

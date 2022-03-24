@@ -193,7 +193,6 @@
 				257A60FBC180CF0D59BA89EF /* Pods-TestMe2Tests.debug.xcconfig */,
 				E7C2C94464AA0A3A6A26301D /* Pods-TestMe2Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
