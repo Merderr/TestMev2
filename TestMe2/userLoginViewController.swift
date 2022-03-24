@@ -104,7 +104,7 @@ class userLoginViewController: UIViewController {
                 let subS = sqlite3_column_int(stmt, 6)
                 let qNum = sqlite3_column_int(stmt, 7)
                 
-                userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), questionNumber: Int(qNum)))
+                userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS)))
                 
             }
             for list in userList {

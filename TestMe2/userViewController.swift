@@ -6,10 +6,9 @@
 //
 
 import UIKit
+import SQLite3
 
 class userViewController: UIViewController {
-    
-
     
     var userList = [User]()
     var stmt : OpaquePointer?
@@ -52,8 +51,7 @@ class userViewController: UIViewController {
            
             
             userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS)))
-            
-            loginName.text = (firstN)
+        
     
         }
         
