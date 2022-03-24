@@ -48,7 +48,7 @@ class userLoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: Any) {
         let  tempUser = loginuser.text! as! NSString
         let  tempPass = loginpass.text! as! NSString
-        let  subsc = subSwitch.isOn as! NSNumber
+        //let  subsc = subSwitch.isOn as! NSNumber
         
         if tempUser == "" || tempPass == ""{
             print("empty input fields")
@@ -76,14 +76,12 @@ class userLoginViewController: UIViewController {
                 let err = String(cString: sqlite3_errmsg(db)!)
                 print(err)
             }
-            if sqlite3_bind_int(stmt, 6, Int32(subsc.uint32Value)) != SQLITE_OK {
-                let err = String(cString: sqlite3_errmsg(db)!)
-                print(err)
-            }
+            //if sqlite3_bind_int(stmt, 6, Int32(subsc.uint32Value)) != SQLITE_OK {
+            //    let err = String(cString: sqlite3_errmsg(db)!)
+            //   print(err)
+            //}
             
-                  loginuser.text = ""
-        loginpass.text = ""
-            subSwitch.isOn = false
+            //subSwitch.isOn = false
             
             
             let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"

@@ -15,7 +15,7 @@ class userViewController: UIViewController {
     var db : OpaquePointer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("projectDB.sqllite")
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
         print("db path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{
@@ -48,16 +48,13 @@ class userViewController: UIViewController {
             let userN = String(cString: sqlite3_column_text(stmt, 4))
             let passW = String(cString: sqlite3_column_text(stmt, 5))
             let subS = sqlite3_column_int(stmt, 6)
-           
+            
             
             userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS)))
-        
-    
+            
         }
-        
     }
     
-
     @IBAction func LogoutButton(_ sender: Any) {
         var stmt : OpaquePointer?
         let query = "delete from TempVariables"
@@ -74,5 +71,25 @@ class userViewController: UIViewController {
         }
         performSegue(withIdentifier: "gologout", sender: sender)
     }
+    
+    
+    
+    @IBAction func sendtoJava(_ sender: Any) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
+    
+    @IBAction func sendtoSwift(_ sender: Any) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "swiftQuiz") as! swiftQViewController
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func sendtoCPlusPlus(_ sender: Any) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "cplusplusQuiz") as! cplusplusQViewController
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    
+}
+

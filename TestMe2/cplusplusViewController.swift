@@ -22,12 +22,15 @@ class cplusplusQViewController: UIViewController {
     @IBOutlet weak var AnsCCheckBox: UIButton!
     @IBOutlet weak var AnsDCheckBox: UIButton!
     
-    
     let q1CorrectAnswer: String = "A"
     let q2CorrectAnswer: String = "B"
     let q3CorrectAnswer: String = "C"
     let q4CorrectAnswer: String = "D"
     let q5CorrectAnswer: String = "A"
+    
+    let correctAnswerArray = ["A","B","C","D"]
+    var answersArray = ["","","",""]
+    let savedAnswer = Answers()
     
     var db : OpaquePointer?
     var stuList = [User]()
@@ -41,25 +44,16 @@ class cplusplusQViewController: UIViewController {
         super.viewDidLoad()
         
         let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
-        print("Database path is ", fileP)
+        print("Db path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {
             print("Cannot open database")
         }
+        startTimer()
         
     }
-    
-    func calculateScore() {
-    }
-    
-    
     
     @IBAction func startQuiz(_ sender: Any) {
-        
-        //        var i : Int = 0
-        //        var j = Int(NumberLabel.text!)
-        //        i = j!
-        //        i+=1
         
         stuList.removeAll()
         let query = "select * from cplusplusQuestions where Number = 1"
@@ -102,7 +96,6 @@ class cplusplusQViewController: UIViewController {
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        questionAnswer = "A"
     }
     
     
@@ -111,16 +104,14 @@ class cplusplusQViewController: UIViewController {
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        questionAnswer = "B"
     }
     
     @IBAction func SelectAnsC(_ sender: Any) {
-        
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        questionAnswer = "C"
+        
     }
     
     
@@ -130,13 +121,11 @@ class cplusplusQViewController: UIViewController {
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        questionAnswer = "D"
     }
     
     
-    @IBAction func saveAnswer1(_ sender: Any) {
+    @IBAction func saveAnswer(_ sender: Any) {
         
-        let quiz = "cplusplus" as! NSString
         let numLabel = NumberLabel.text! as! NSString
         //let n = questionNumber as! NSString
         let qA = questionAnswer as! NSString
@@ -146,11 +135,6 @@ class cplusplusQViewController: UIViewController {
         if sqlite3_prepare_v2(db, query, -1, &stmt, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is a prepare error", err)
-        }
-        
-        if sqlite3_bind_text(stmt, 1, quiz.utf8String, -1, nil) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print("There is a bind error", err)
         }
         
         if sqlite3_bind_text(stmt, 2, numLabel.utf8String, -1, nil) != SQLITE_OK {
@@ -168,11 +152,44 @@ class cplusplusQViewController: UIViewController {
             print("There is a step error", err)
         }
         
-        //name.text = ""
-        //course.text = ""*/
         print(questionAnswer)
-        //print(n)
         print("Data has been saved")
+        
+        if numLabel == "1" {
+            savedAnswer.questionAnswer1 = questionAnswer
+        }
+        else if numLabel == "2" {
+            savedAnswer.questionAnswer2 = questionAnswer
+        }
+        else if numLabel == "3" {
+            savedAnswer.questionAnswer3 = questionAnswer
+        }
+        else if numLabel == "4" {
+            savedAnswer.questionAnswer4 = questionAnswer
+        }
+        
+        var finalScore: Double = 0.0
+        var v = 0
+        var w = 0
+        var x = 0
+        var y = 0
+        
+        if savedAnswer.questionAnswer1 == correctAnswerArray[0] {
+            v = 1
+        }
+        if savedAnswer.questionAnswer2 == correctAnswerArray[1] {
+            w = 1
+        }
+        if savedAnswer.questionAnswer3 == correctAnswerArray[2] {
+            x = 1
+        }
+        if savedAnswer.questionAnswer4 == correctAnswerArray[3] {
+            y = 1
+        }
+        
+        var z = Double(v + w + x + y)
+        finalScore = Double((z / 4) * 100)
+        print(finalScore)
         
     }
     
@@ -186,8 +203,6 @@ class cplusplusQViewController: UIViewController {
         
         stuList.removeAll()
         var queryString = "select * from cplusplusQuestions where Number = \(i)"
-        //let query = queryString//"select * from Questions where Number = i"
-        //print(queryString)
         var stmt : OpaquePointer?
         
         if sqlite3_prepare_v2(db, queryString, -2, &stmt, nil) != SQLITE_OK {

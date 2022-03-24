@@ -27,6 +27,18 @@ class Questions {
         self.questionChoiceD = questionChoiceD
         self.questionAnswer = questionAnswer
         
+    }
+}
+
+class Answers {
+    
+    var questionAnswer1 : String = ""
+    var questionAnswer2 : String = ""
+    var questionAnswer3 : String = ""
+    var questionAnswer4 : String = ""
+    
+    init(){
         
     }
+    
 }
