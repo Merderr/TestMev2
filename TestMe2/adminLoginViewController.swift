@@ -23,8 +23,8 @@ class adminLoginViewController: UIViewController {
     
     @IBAction func adminLogin(_ sender: Any) {
         if (tempAdminPass.text == adminPass) && (tempAdminUsername.text == adminUser){
-        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "adminView") as! adminViewController
-        self.present(nextViewController, animated: true, completion: nil)
+            let nextViewController = storyboard?.instantiateViewController(withIdentifier: "adminView") as! adminViewController
+            self.present(nextViewController, animated: true, completion: nil)
         } else {
             var dialogMessage = UIAlertController(title: "Attention", message: "Invalid credentials, please check and try again.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default, handler:  {

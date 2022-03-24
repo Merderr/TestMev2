@@ -17,9 +17,9 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqllite")
-            print("db path is ", fileP)
-
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
+        print("db path is ", fileP)
+        
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{
             print("cant open data base")
         }
@@ -52,7 +52,7 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         ncont.subtitle = "From TestMe App"
         ncont.body = "A new quiz has been created, please come try it!"
         
-        let ntrigger = UNTimeIntervalNotificationTrigger(timeInterval: 3.0, repeats: false)
+        let ntrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
         let nreq = UNNotificationRequest(identifier: "User_Local_notification", content: ncont, trigger: ntrigger)
         
         UNUserNotificationCenter.current().add(nreq) { err in
@@ -72,34 +72,34 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
     }
     
     let queryStatementString = "Select * From User;"
-
+    
     @IBAction func blockUser(_ sender: Any) {
         var queryStatement: OpaquePointer?
         
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) ==
             SQLITE_OK {
-          
-          if sqlite3_step(queryStatement) == SQLITE_ROW {
             
-            let id = sqlite3_column_int(queryStatement, 0)
-            
-            guard let queryResultCol1 = sqlite3_column_text(queryStatement, 1) else {
-              print("Query result is nil")
-              return
+            if sqlite3_step(queryStatement) == SQLITE_ROW {
+                
+                let id = sqlite3_column_int(queryStatement, 0)
+                
+                guard let queryResultCol1 = sqlite3_column_text(queryStatement, 1) else {
+                    print("Query result is nil")
+                    return
+                }
+                let name = String(cString: queryResultCol1)
+                if (name == userToBlock.text){
+                    print("block")
+                } else {
+                    print("not blocked")
+                }
+            } else {
+                print("\nQuery returned no results.")
             }
-            let name = String(cString: queryResultCol1)
-              if (name == userToBlock.text){
-                  print("block")
-              } else {
-                  print("not blocked")
-              }
-        } else {
-            print("\nQuery returned no results.")
-        }
         } else {
             
-          let errorMessage = String(cString: sqlite3_errmsg(db))
-          print("\nQuery is not prepared \(errorMessage)")
+            let errorMessage = String(cString: sqlite3_errmsg(db))
+            print("\nQuery is not prepared \(errorMessage)")
         }
         
         sqlite3_finalize(queryStatement)

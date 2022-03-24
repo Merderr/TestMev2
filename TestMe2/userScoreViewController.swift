@@ -6,42 +6,57 @@
 //
 
 import UIKit
+import SQLite3
 
 class userScoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var userScoreTable: UITableView!
     
-    let cellReuseIdentifier = "cell"
-    
-    var db: DBHelper = DBHelper()
-    
-    var users: [User] = []
+    var db : OpaquePointer?
+    var user : [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
+        print("db path is ", fileP)
         
-        userScoreTable.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        userScoreTable.delegate = self
-        userScoreTable.dataSource = self
+        if sqlite3_open(fileP.path, &db) != SQLITE_OK{
+            print("cant open data base")
+        }
+        let queryString = "Select * from User"
         
+        var stmt:OpaquePointer?
         
-        db.insert(ID: 001, email: "test@gmail.com", FirstName: "UserFirstName", LastName: "UserLastName", Username: "Username1", Password: "123", Subscription: 1)
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
         
-        users = db.read()
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let name = String(cString: sqlite3_column_text(stmt, 1))
+            print("id:\(id) name:\(name)")
+        }
+        
+        self.userScoreTable.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return users.count
+        return user.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
-        //cell.textLabel?.text = "ID : " + users[indexPath.row].ID! + "Email: " + String(users[indexPath.row].Email!) + "First Name: " + String(users[indexPath.row].fName!) + "Last Name: " + String(users[indexPath.row].lName!) + "User Name: " + String(users[indexPath.row].Username!) + "Password: " + String(users[indexPath.row].Password!) + "Subscription: " + users[indexPath.row].Subscription!)
-        cell.textLabel?.text = "Email: " + String(users[indexPath.row].Email!)
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userScoreTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "Id: " + String(user[indexPath.row].ID) + ", Name: " + user[indexPath.row].Username!
         return cell
     }
+    
 }
+
 

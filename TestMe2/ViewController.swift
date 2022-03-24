@@ -63,26 +63,39 @@ class ViewController: UIViewController, LoginButtonDelegate {
             self.lgbtn.delegate = self
             lgbtn.permissions = ["public_public", "email"]
         }
-        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("projectDB.sqllite")
+
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
         print("db path is ", fileP)
         
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{
             print("cant open data base")
         }
         
-        if sqlite3_exec(db, "create table if not exists User (ID integer primary key autoincrement,Fname text,Lname text, Email text,Username text, Password Text, Subscription integer)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "create table if not exists User (ID INTEGER primary key autoincrement,Fname TEXT,Lname TEXT, Email TEXT,Username TEXT, Password TEXT, Subscription integer)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
-        if sqlite3_exec(db, "create table if not exists TempVariables (tempUser text primary key, tempPass text)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "create table if not exists TempVariables (tempUser TEXT primary key, tempPass TEXT)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
-        if sqlite3_exec(db, "create table if not exists Questions (q1 text, q2 text, q3 text, q4 text, q5 text)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "create table if not exists swiftQuestions (Number TEXT primary key, QuestionText TEXT, AnswerA TEXT, AnswerB TEXT, AnswerC TEXT, AnswerD TEXT, CorrectAnswer TEXT)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
-    
+        if sqlite3_exec(db, "create table if not exists cplusplusQuestions (Number TEXT primary key, QuestionText TEXT, AnswerA TEXT, AnswerB TEXT, AnswerC TEXT, AnswerD TEXT, CorrectAnswer TEXT)", nil, nil, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("no error",err)
+        }
+        if sqlite3_exec(db, "create table if not exists javaQuestions (Number TEXT primary key, QuestionText TEXT, AnswerA TEXT, AnswerB TEXT, AnswerC TEXT, AnswerD TEXT, CorrectAnswer TEXT)", nil, nil, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("no error",err)
+        }
+        if sqlite3_exec(db, "create table if not exists Answers (Email TEXT primary key, FirstName TEXT, LastName TEXT, Quiz TEXT, QuestionNumber TEXT, QuestionAnswer TEXT)", nil, nil, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("no error",err)
+        }
+        
     }
     
     @IBAction func saveButton(_ sender: Any) {
@@ -155,7 +168,7 @@ class ViewController: UIViewController, LoginButtonDelegate {
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
     }
-
+    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
         let token = result?.token?.tokenString
         
