@@ -9,10 +9,72 @@ import UIKit
 
 class userViewController: UIViewController {
     
+
+    
+    var userList = [User]()
+    var stmt : OpaquePointer?
+    var db : OpaquePointer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("projectDB.sqllite")
+        print("db path is ", fileP)
         
-        // Do any additional setup after loading the view.
+        if sqlite3_open(fileP.path, &db) != SQLITE_OK{
+            print("cant open data base")
+        }
+        
+        if sqlite3_exec(db, "create table if not exists User (ID integer primary key autoincrement,Fname text,Lname text, Email text,Username text, Password Text, Subscription integer)", nil, nil, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("no error",err)
+        }
+        if sqlite3_exec(db, "create table if not exists TempVariables (tempUser text primary key, tempPass text)", nil, nil, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("no error",err)
+        }
+        
+        let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"
+        
+        
+        if sqlite3_prepare(db, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            return
+        }
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            //the users info
+            let id = sqlite3_column_int(stmt, 0)
+            let firstN = String(cString: sqlite3_column_text(stmt, 1))
+            let lastN = String(cString: sqlite3_column_text(stmt, 2))
+            let eMail = String(cString: sqlite3_column_text(stmt, 3))
+            let userN = String(cString: sqlite3_column_text(stmt, 4))
+            let passW = String(cString: sqlite3_column_text(stmt, 5))
+            let subS = sqlite3_column_int(stmt, 6)
+           
+            
+            userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS)))
+            
+            loginName.text = (firstN)
+    
+        }
+        
     }
     
-}
+
+    @IBAction func LogoutButton(_ sender: Any) {
+        var stmt : OpaquePointer?
+        let query = "delete from TempVariables"
+        
+        
+        if sqlite3_prepare(db, query, -2, &stmt, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        performSegue(withIdentifier: "gologout", sender: sender)
+    }
+    }
+    

@@ -81,6 +81,8 @@ class userLoginViewController: UIViewController {
                 print(err)
             }
             
+                  loginuser.text = ""
+        loginpass.text = ""
             subSwitch.isOn = false
             
             
@@ -141,3 +143,4 @@ class userLoginViewController: UIViewController {
         }
     }
 }
+
