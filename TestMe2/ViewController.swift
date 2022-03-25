@@ -68,7 +68,7 @@ class ViewController: UIViewController, LoginButtonDelegate {
             print("cant open data base")
         }
         
-        if sqlite3_exec(db, "create table if not exists User (ID INTEGER primary key autoincrement,Fname TEXT,Lname TEXT, Email TEXT,Username TEXT, Password TEXT, Subscription integer, Blocked text, cplusplusScore integer, swiftScore integer, javaScore integer)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "create table if not exists User (ID INTEGER primary key autoincrement,Fname TEXT,Lname TEXT, Email TEXT,Username TEXT, Password TEXT, Subscription integer, Blocked TEXT, cplusplusScore integer, swiftScore integer, javaScore integer)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
@@ -103,8 +103,9 @@ class ViewController: UIViewController, LoginButtonDelegate {
         let  usern = username.text! as! NSString
         let  passw = password.text as! NSString
         let  subsc = subSwitch.isOn as! NSNumber
+        let blocked = "false"
         var stmt : OpaquePointer?
-        let query = "insert into User (Fname, Lname, Email, Username, Password, Subscription) values (?,?,?,?,?,?)"
+        let query = "insert into User (Fname, Lname, Email, Username, Password, Subscription, Blocked) values (?,?,?,?,?,?,?)"
         
         if sqlite3_prepare_v2(db,query,-1,&stmt,nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -136,6 +137,11 @@ class ViewController: UIViewController, LoginButtonDelegate {
             
         }
         if sqlite3_bind_int(stmt, 6, Int32(subsc.uint32Value)) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        if sqlite3_bind_text(stmt, 7, blocked, -1, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
             

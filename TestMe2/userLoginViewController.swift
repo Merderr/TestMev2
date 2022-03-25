@@ -99,10 +99,6 @@ class userLoginViewController: UIViewController {
                 
             }
             
-            
-            
-            
-            
             let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"
             
             
