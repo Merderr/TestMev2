@@ -12,6 +12,7 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var userRankingView: UITableView!
     @IBOutlet weak var welcome: UILabel!
+    var count: Int = 0
     var userList = [User]()
     var stmt : OpaquePointer?
     var db : OpaquePointer?
@@ -55,14 +56,17 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
             welcome.text = (firstN)
-            
+            //for u in userList{
+              //  if (u.Subscription != 1){
+              //  count = 0
+              //  }
+            //}
         }
     }
     
     @IBAction func LogoutButton(_ sender: Any) {
         var stmt : OpaquePointer?
         let query = "delete from TempVariables"
-        
         
         if sqlite3_prepare(db, query, -2, &stmt, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -78,7 +82,8 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    @IBAction func sendtoJava(_ sender: Any) {
+    @IBAction func sendtoJava(_ sender: UIButton) {
+        sender.preventRepeatedPresses()
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
         self.present(nextViewController, animated: true, completion: nil)
     }
@@ -109,7 +114,13 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = "Userame: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].Score)
         return cell
     }
-    
-    
 }
 
+extension UIButton {
+    func preventRepeatedPresses(inNext seconds: Double = 15) {
+        self.isUserInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            self.isUserInteractionEnabled = true
+        }
+    }
+}
