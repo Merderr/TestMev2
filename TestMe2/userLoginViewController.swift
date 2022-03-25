@@ -126,9 +126,17 @@ class userLoginViewController: UIViewController {
                 
             }
             for list in userList {
-                if (loginuser.text == list.Username!) && (loginpass.text == list.Password!){
+                if (loginuser.text == list.Username!) && (loginpass.text == list.Password!) && (list.Blocked == "false"){
                     let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! userViewController
                     self.present(nextViewController, animated: true, completion: nil)
+                } else if (list.Blocked == "true"){
+                    var dialogMessage = UIAlertController(title: "Attention", message: "User is blocked please contact an Admin.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default, handler:  {
+                        (action) -> Void in
+                        print("Ok button tapped")
+                    })
+                    dialogMessage.addAction(ok)
+                    self.present(dialogMessage, animated: true, completion: nil)
                 } else if (loginuser.text == list.Username!) && (loginpass.text != list.Password!){
                     var dialogMessage = UIAlertController(title: "Attention", message: "Invalid password, please check and try again.", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "OK", style: .default, handler:  {

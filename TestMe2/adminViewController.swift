@@ -98,29 +98,41 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
                     user.append(User(ID: Int(id), Email: email, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
                 }
                 
-                let id = sqlite3_column_int(queryStatement, 0)
+                let blocked = "true"
+                let email = String(cString: sqlite3_column_text(queryStatement, 3))
+                if (email == userToBlock.text){
+                    var stmt : OpaquePointer?
+                    var email = "test324@gmail.com" as NSString
+                    
+                    
+                    
+                    let query = "UPDATE User SET Blocked = 'true' WHERE Email = '\(email)'"
+                    
+                    if sqlite3_prepare_v2(db,query,-1,&stmt,nil) == SQLITE_OK {
+                        print("inside sqlite okay")
+                        let err = String(cString: sqlite3_errmsg(db)!)
+                        if sqlite3_step(stmt) == SQLITE_DONE {
+                            print("inside sqlite done")
+                            let err = String(cString: sqlite3_errmsg(db)!)
+                            print(err)
+                        }
+                        print(err)
+                    }
+                    //if sqlite3_bind_text(stmt, 1, blocked, -1, nil) != SQLITE_OK {
+                     //  let err = String(cString: sqlite3_errmsg(db)!)
+                     //   print(err)
+                    //
+                    //}
+                    //if sqlite3_step(stmt) != SQLITE_DONE {
+                     //   let err = String(cString: sqlite3_errmsg(db)!)
+                    //    print(err)
+                    //}
+                    sqlite3_finalize(stmt)
                 
-                guard let queryResultCol1 = sqlite3_column_text(queryStatement, 4) else {
-                    print("Query result is nil")
-                    return
+                
                 }
-                let name = String(cString: queryResultCol1)
-                if (name == userToBlock.text){
-                    print("block")
-                } else {
-                    print("not blocked")
-                }
-            } else {
-                print("\nQuery returned no results.")
-            }
-        } else {
-            
-            let errorMessage = String(cString: sqlite3_errmsg(db))
-            print("\nQuery is not prepared \(errorMessage)")
-        }
-        
-        sqlite3_finalize(queryStatement)
         
     }
 }
-
+    }
+}
