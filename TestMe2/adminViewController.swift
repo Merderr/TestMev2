@@ -104,8 +104,6 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
                     var stmt : OpaquePointer?
                     var email = "test324@gmail.com" as NSString
                     
-                    
-                    
                     let query = "UPDATE User SET Blocked = 'true' WHERE Email = '\(email)'"
                     
                     if sqlite3_prepare_v2(db,query,-1,&stmt,nil) == SQLITE_OK {
