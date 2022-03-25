@@ -8,8 +8,9 @@
 import UIKit
 import SQLite3
 
-class userViewController: UIViewController {
+class userViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var userRankingView: UITableView!
     @IBOutlet weak var welcome: UILabel!
     var userList = [User]()
     var stmt : OpaquePointer?
@@ -91,6 +92,22 @@ class userViewController: UIViewController {
     @IBAction func sendtoCPlusPlus(_ sender: Any) {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "cplusplusQuiz") as! cplusplusQViewController
         self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return userList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "Userame: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].Score)
+        return cell
     }
     
     
