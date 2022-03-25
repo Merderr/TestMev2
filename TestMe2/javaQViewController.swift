@@ -182,11 +182,16 @@ class javaQViewController: UIViewController {
         
         
         
+        
+        
+        
+        //puts final score into user table
+        
         let javafinalScore = finalScore as! NSNumber
         
         
         
-        let finalscorequery = "insert into TempVariables (javafinalScore) values (?)"
+        let finalscorequery = "insert into TempVariables (javaScoretemp) values (?)"
         
         if sqlite3_prepare_v2(db,finalscorequery,-1,&stmt,nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -198,6 +203,20 @@ class javaQViewController: UIViewController {
             print(err)
             
         }
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        let finalscoreupdatequery = "UPDATE User SET javaScore = (SELECT TempVariables.javaScoretemp FROM TempVariables WHERE TempVariables.javaScoretemp != ' ')"
+        
+        if sqlite3_prepare_v2(db,finalscoreupdatequery,-1,&stmt,nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+       
+        
         if sqlite3_step(stmt) != SQLITE_DONE {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)

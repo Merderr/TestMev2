@@ -195,6 +195,46 @@ class swiftQViewController: UIViewController {
         
         
         
+        //puts final score into user table
+        
+        let swiftfinalScore = finalScore as! NSNumber
+        
+        
+        
+        let finalscorequery = "insert into TempVariables (swiftScoretemp) values (?)"
+        
+        if sqlite3_prepare_v2(db,finalscorequery,-1,&stmt,nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+       
+        if sqlite3_bind_int(stmt, 9, Int32(swiftfinalScore.uint32Value)) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        let finalscoreupdatequery = "UPDATE User SET swiftScore = (SELECT TempVariables.swiftScoretemp FROM TempVariables WHERE TempVariables.swiftScoretemp != ' ')"
+        
+        if sqlite3_prepare_v2(db,finalscoreupdatequery,-1,&stmt,nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+       
+        
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        
+        
     }
     
     @IBAction func ViewNext(_ sender: Any) {

@@ -190,6 +190,47 @@ class cplusplusQViewController: UIViewController {
         finalScore = Double((z / 4) * 100)
         print(finalScore)
         
+        
+        
+        //puts final score into user table
+        
+        let cplusplusfinalScore = finalScore as! NSNumber
+        
+        
+        
+        let finalscorequery = "insert into TempVariables (cplusplusScoretemp) values (?)"
+        
+        if sqlite3_prepare_v2(db,finalscorequery,-1,&stmt,nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+       
+        if sqlite3_bind_int(stmt, 9, Int32(cplusplusfinalScore.uint32Value)) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        let finalscoreupdatequery = "UPDATE User SET cplusplusScore = (SELECT TempVariables.cplusplusScoretemp FROM TempVariables WHERE TempVariables.cplusplusScoretemp != ' ')"
+        
+        if sqlite3_prepare_v2(db,finalscoreupdatequery,-1,&stmt,nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+       
+        
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        
     }
     
     
