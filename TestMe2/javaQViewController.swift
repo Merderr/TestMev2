@@ -48,12 +48,11 @@ class javaQViewController: UIViewController {
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {
             print("Cannot open database")
         }
-        startTimer()
         
     }
     
     @IBAction func ViewQuestion(_ sender: Any) {
-        
+        startTimer()
         stuList.removeAll()
         let query = "select * from javaQuestions where Number = 1"
         var stmt : OpaquePointer?

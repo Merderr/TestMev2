@@ -43,7 +43,7 @@ class userLoginViewController: UIViewController {
         if sqlite3_open(fileP.path, &db) != SQLITE_OK{
             print("cant open data base")
         }
-    }
+    }		
     
     @IBAction func loginButton(_ sender: Any) {
         let  tempUser = loginuser.text! as! NSString
@@ -100,13 +100,13 @@ class userLoginViewController: UIViewController {
                 let userN = String(cString: sqlite3_column_text(stmt, 4))
                 let passW = String(cString: sqlite3_column_text(stmt, 5))
                 let subS = sqlite3_column_int(stmt, 6)
-                let qNum = sqlite3_column_int(stmt, 7)
-                
-                userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS)))
+                let blocked = String(cString: sqlite3_column_text(stmt, 7))
+                let qNum = sqlite3_column_int(stmt, 8)
+                let score = sqlite3_column_int(stmt, 9)
+                userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
                 
             }
             for list in userList {
-                print("id is", list.ID,"name is", list.Username!,"password is", list.Password!)
                 if (loginuser.text == list.Username!) && (loginpass.text == list.Password!){
                     let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! userViewController
                     self.present(nextViewController, animated: true, completion: nil)

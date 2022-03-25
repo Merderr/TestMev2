@@ -47,10 +47,11 @@ class userViewController: UIViewController {
             let eMail = String(cString: sqlite3_column_text(stmt, 3))
             let userN = String(cString: sqlite3_column_text(stmt, 4))
             let passW = String(cString: sqlite3_column_text(stmt, 5))
-            let subS = sqlite3_column_int(stmt, 6)
-            
-            
-            userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS)))
+            let blocked = String(cString: sqlite3_column_text(stmt, 6))
+            let subS = sqlite3_column_int(stmt, 7)
+            let score = sqlite3_column_int(stmt, 8)
+
+            userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
             
         }
     }

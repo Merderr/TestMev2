@@ -35,8 +35,10 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
         
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
-            let name = String(cString: sqlite3_column_text(stmt, 1))
-            user.append(User(ID: Int(id), Email: "", FirstName: "", LastName: "", Username: name, Password: "", Subscription: 0))
+            let Uname = String(cString: sqlite3_column_text(stmt, 4))
+            let score = sqlite3_column_int(stmt, 8)
+            
+            user.append(User(ID: Int(id), Email: "", FirstName: "", LastName: "", Username: Uname, Password: "", Subscription: 0, Blocked: "", Score: Int(score)))
         }
         
         self.userScoreTable.reloadData()
@@ -53,7 +55,7 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userScoreTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Id: " + String(user[indexPath.row].ID) + ", Name: " + user[indexPath.row].Username!
+        cell.textLabel?.text = "Userame: " + user[indexPath.row].Username! + ", Score:" + String(user[indexPath.row].Score)
         return cell
     }
     

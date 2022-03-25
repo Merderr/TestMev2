@@ -11,6 +11,7 @@ import SQLite3
 
 class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
     
+    var user = [User]()
     var db : OpaquePointer?
     
     @IBOutlet weak var userToBlock: UITextField!
@@ -71,19 +72,34 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         self.present(nextViewController, animated: true, completion: nil)
     }
     
-    let queryStatementString = "Select * From User;"
     
     @IBAction func blockUser(_ sender: Any) {
         var queryStatement: OpaquePointer?
+        var stmt : OpaquePointer?
+        let queryStatementString = "Select * From User;"
         
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) ==
             SQLITE_OK {
             
             if sqlite3_step(queryStatement) == SQLITE_ROW {
                 
+                while(sqlite3_step(stmt) == SQLITE_ROW){
+                    let id = sqlite3_column_int(stmt, 0)
+                    let firstN = String(cString: sqlite3_column_text(stmt, 1))
+                    let lastN = String(cString: sqlite3_column_text(stmt, 2))
+                    let email = String(cString: sqlite3_column_text(stmt, 3))
+                    let userN = String(cString: sqlite3_column_text(stmt, 4))
+                    let passW = String(cString: sqlite3_column_text(stmt, 5))
+                    let subS = sqlite3_column_int(stmt, 6)
+                    let blocked = String(cString: sqlite3_column_text(stmt, 7))
+                    let qNum = sqlite3_column_int(stmt, 8)
+                    let score = sqlite3_column_int(stmt, 9)
+                    user.append(User(ID: Int(id), Email: email, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
+                }
+                
                 let id = sqlite3_column_int(queryStatement, 0)
                 
-                guard let queryResultCol1 = sqlite3_column_text(queryStatement, 1) else {
+                guard let queryResultCol1 = sqlite3_column_text(queryStatement, 4) else {
                     print("Query result is nil")
                     return
                 }

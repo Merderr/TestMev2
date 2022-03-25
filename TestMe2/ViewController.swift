@@ -68,7 +68,7 @@ class ViewController: UIViewController, LoginButtonDelegate {
             print("cant open data base")
         }
         
-        if sqlite3_exec(db, "create table if not exists User (ID INTEGER primary key autoincrement,Fname TEXT,Lname TEXT, Email TEXT,Username TEXT, Password TEXT, Subscription integer)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "create table if not exists User (ID INTEGER primary key autoincrement,Fname TEXT,Lname TEXT, Email TEXT,Username TEXT, Password TEXT, Subscription INTEGER, Blocked TEXT, Score INTEGER)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
