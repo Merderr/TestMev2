@@ -34,24 +34,32 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Back">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Back">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="qtX-J3-Oa5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNa-WW-b6C">
-                                <rect key="frame" x="5" y="110" width="414" height="75"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKL-V0-XBl">
+                                <rect key="frame" x="40" y="305" width="100" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginButton:" destination="WcR-bC-skP" eventType="touchUpInside" id="8pX-8K-U6l"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNa-WW-b6C">
+                                <rect key="frame" x="0.0" y="85" width="414" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Please enter username and password">
+                                    <fragment>
+                                        <string key="content">Please enter username 
+and password</string>
                                         <attributes>
                                             <font key="NSFont" size="24" name="Noteworthy-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -60,24 +68,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKL-V0-XBl">
-                                <rect key="frame" x="40" y="305" width="100" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Login">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="loginButton:" destination="WcR-bC-skP" eventType="touchUpInside" id="8pX-8K-U6l"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JyD-3m-GDL"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -129,14 +119,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="User Login">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="User Login">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="userView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A6v-db-Xfb"/>
@@ -174,14 +158,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Admin Login">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Admin Login">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="adminView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CsE-It-BOY"/>
@@ -205,14 +183,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Save">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f6T-gt-VBE"/>
@@ -222,7 +194,7 @@
                                 <rect key="frame" x="71" y="668" width="279" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="FB Button"/>
                                 <connections>
                                     <action selector="loginfb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9D9-6P-Rax"/>
                                 </connections>
@@ -339,19 +311,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nf-Wa-IKG">
-                                <rect key="frame" x="114" y="171" width="181" height="81"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="View User Score">
-                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="userScoreView:" destination="9hH-v9-m0g" eventType="touchUpInside" id="EMQ-Iw-fiN"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2X-xY-g60">
                                 <rect key="frame" x="103" y="332" width="209" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -395,6 +354,19 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="Wbx-gc-Cje"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nf-Wa-IKG">
+                                <rect key="frame" x="103" y="171" width="181" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View User Score">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="userScoreView:" destination="9hH-v9-m0g" eventType="touchUpInside" id="EMQ-Iw-fiN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -479,15 +451,8 @@
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Java">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Java">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="sendtoJava:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="g0Q-au-ZOb"/>
@@ -499,15 +464,8 @@
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Swift">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Swift">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="sendtoSwift:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="Iop-bU-AAV"/>
@@ -518,14 +476,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Logout">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="LogoutButton:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="3z4-wQ-HxA"/>
@@ -544,15 +496,8 @@
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="C++">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="C++">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="sendtoCPlusPlus:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="87t-Cd-SRf"/>
@@ -564,15 +509,8 @@
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Exit to home page">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Noteworthy-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" title="Exit to home page">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="UDC-Zy-N18"/>
@@ -723,10 +661,11 @@
                                     <action selector="saveAnswer:" destination="fW3-Lu-STu" eventType="touchUpInside" id="FiI-3D-NlP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySk-nN-rGq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySk-nN-rGq">
                                 <rect key="frame" x="185.8698630136987" y="105" width="40.000000000000114" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time: 30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ole-d0-QQ6">
@@ -900,7 +839,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-e3-YZr">
                                 <rect key="frame" x="185" y="105" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1114,28 +1053,28 @@
                                     <segue destination="bFl-Bz-bhw" kind="show" id="GJT-y6-c8f"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3K-qK-RBH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3K-qK-RBH">
                                 <rect key="frame" x="100" y="480" width="285" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsC-zq-jnA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsC-zq-jnA">
                                 <rect key="frame" x="100" y="420" width="285" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpo-5i-vQE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpo-5i-vQE">
                                 <rect key="frame" x="100" y="360" width="285" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i11-bK-zTc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i11-bK-zTc">
                                 <rect key="frame" x="100" y="300" width="285" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
@@ -1214,7 +1153,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="GJT-y6-c8f"/>
-        <segue reference="UDC-Zy-N18"/>
+        <segue reference="Wbx-gc-Cje"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">

@@ -49,7 +49,6 @@ class swiftQViewController: UIViewController {
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {
             print("Cannot open database")
         }
-        startTimer()
         
     }
     

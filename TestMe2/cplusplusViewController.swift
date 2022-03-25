@@ -49,7 +49,6 @@ class cplusplusQViewController: UIViewController {
         if sqlite3_open(fileP.path, &db) != SQLITE_OK {
             print("Cannot open database")
         }
-        startTimer()
         
     }
     
@@ -86,7 +85,7 @@ class cplusplusQViewController: UIViewController {
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
-        
+    
         startTimer()
     }
     
