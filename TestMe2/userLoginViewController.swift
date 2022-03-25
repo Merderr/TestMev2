@@ -84,6 +84,25 @@ class userLoginViewController: UIViewController {
             //subSwitch.isOn = false
             
             
+            
+            let updatequery = "Update TempVariables SET Fnametemp = (SELECT User.Fname from User WHERE User.Username = TempVariables.tempUser),Lnametemp = (SELECT User.Lname from User WHERE User.Username = TempVariables.tempUser),Emailtemp = (SELECT User.Email from User WHERE User.Username = TempVariables.tempUser),Subscriptiontemp = (SELECT User.Subscription from User WHERE User.Username = TempVariables.tempUser) WHERE EXISTS (SELECT * FROM User WHERE User.Username = TempVariables.tempUser)"
+            
+            if sqlite3_prepare_v2(db,updatequery,-1,&stmt,nil) != SQLITE_OK {
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print(err)
+            }
+           
+            
+            if sqlite3_step(stmt) != SQLITE_DONE {
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print(err)
+                
+            }
+            
+            
+            
+            
+            
             let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"
             
             

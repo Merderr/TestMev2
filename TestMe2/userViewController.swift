@@ -10,6 +10,7 @@ import SQLite3
 
 class userViewController: UIViewController {
     
+    @IBOutlet weak var welcome: UILabel!
     var userList = [User]()
     var stmt : OpaquePointer?
     var db : OpaquePointer?
@@ -52,6 +53,7 @@ class userViewController: UIViewController {
             let score = sqlite3_column_int(stmt, 8)
 
             userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
+            welcome.text = (firstN)
             
         }
     }
