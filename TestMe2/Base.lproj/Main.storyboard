@@ -471,18 +471,6 @@ and password</string>
                                     <action selector="sendtoSwift:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="Iop-bU-AAV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lp6-Uq-Kui">
-                                <rect key="frame" x="20" y="50" width="100" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Logout">
-                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="LogoutButton:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="3z4-wQ-HxA"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What type of quiz would you like to take?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5K-TZ-TLr">
                                 <rect key="frame" x="8" y="128" width="406" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -537,17 +525,17 @@ and password</string>
                                     <outlet property="delegate" destination="bFl-Bz-bhw" id="laA-n7-717"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ac9-l7-Byw">
-                                <rect key="frame" x="82" y="778" width="250" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lp6-Uq-Kui">
+                                <rect key="frame" x="82" y="780" width="250" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Exit to home page">
+                                <buttonConfiguration key="configuration" style="plain" title="Logout">
                                     <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="UDC-Zy-N18"/>
+                                    <action selector="LogoutButton:" destination="bFl-Bz-bhw" eventType="touchUpInside" id="3z4-wQ-HxA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1174,7 +1162,7 @@ and password</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="GJT-y6-c8f"/>
-        <segue reference="UDC-Zy-N18"/>
+        <segue reference="qtX-J3-Oa5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
