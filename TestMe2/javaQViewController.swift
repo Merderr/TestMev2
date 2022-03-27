@@ -209,7 +209,7 @@ class javaQViewController: UIViewController {
             
         }
         
-        let finalscoreupdatequery = "UPDATE User SET javaScore = (SELECT TempVariables.javaScoretemp FROM TempVariables WHERE TempVariables.javaScoretemp != ' ')"
+        let finalscoreupdatequery = "UPDATE User SET javaScore = (SELECT TempVariables.javaScoretemp FROM TempVariables WHERE TempVariables.javaScoretemp != ' ' ) WHERE Username = (SELECT tempUser FROM TempVariables WHERE TempVariables.tempUser = User.Username)"
         
         if sqlite3_prepare_v2(db,finalscoreupdatequery,-1,&stmt,nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)

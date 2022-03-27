@@ -219,7 +219,7 @@ class swiftQViewController: UIViewController {
             
         }
         
-        let finalscoreupdatequery = "UPDATE User SET swiftScore = (SELECT TempVariables.swiftScoretemp FROM TempVariables WHERE TempVariables.swiftScoretemp != ' ')"
+        let finalscoreupdatequery = "UPDATE User SET swiftScore = (SELECT TempVariables.swiftScoretemp FROM TempVariables WHERE TempVariables.swiftScoretemp != ' ') WHERE Username = (SELECT tempUser FROM TempVariables WHERE TempVariables.tempUser = User.Username)"
         
         if sqlite3_prepare_v2(db,finalscoreupdatequery,-1,&stmt,nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)

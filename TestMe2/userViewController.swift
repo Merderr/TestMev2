@@ -111,7 +111,7 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Userame: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].Score)
+        cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].Score)
         return cell
     }
 }

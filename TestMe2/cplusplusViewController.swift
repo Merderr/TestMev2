@@ -216,7 +216,7 @@ class cplusplusQViewController: UIViewController {
             
         }
         
-        let finalscoreupdatequery = "UPDATE User SET cplusplusScore = (SELECT TempVariables.cplusplusScoretemp FROM TempVariables WHERE TempVariables.cplusplusScoretemp != ' ')"
+        let finalscoreupdatequery = "UPDATE User SET cplusplusScore = (SELECT TempVariables.cplusplusScoretemp FROM TempVariables WHERE TempVariables.cplusplusScoretemp != ' ') WHERE Username = (SELECT tempUser FROM TempVariables WHERE TempVariables.tempUser = User.Username)"
         
         if sqlite3_prepare_v2(db,finalscoreupdatequery,-1,&stmt,nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
