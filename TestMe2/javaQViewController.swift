@@ -87,11 +87,13 @@ class javaQViewController: UIViewController {
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         
     }
+    
     @IBAction func SelectAnsA(_ sender: Any) {
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "A"
     }
     
     @IBAction func SelectAnsB(_ sender: Any) {
@@ -99,18 +101,21 @@ class javaQViewController: UIViewController {
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "B"
     }
     @IBAction func SelectAnsC(_ sender: Any) {
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "C"
     }
     @IBAction func SelectAnsD(_ sender: Any) {
         AnsDCheckBox.setImage(UIImage(systemName: "checkmark.circle.fill")! as UIImage, for: UIControl.State.normal)
         AnsBCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsCCheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
         AnsACheckBox.setImage(UIImage(systemName: "checkmark.circle")! as UIImage, for: UIControl.State.normal)
+        questionAnswer = "D"
     }
     
     @IBAction func saveAnswer(_ sender: Any) {
@@ -156,27 +161,34 @@ class javaQViewController: UIViewController {
         else if numLabel == "4" {
             savedAnswer.questionAnswer4 = questionAnswer
         }
+        else if numLabel == "5" {
+            savedAnswer.questionAnswer5 = questionAnswer
+        }
         
         var finalScore: Double = 0.0
-        var v = 0
-        var w = 0
-        var x = 0
-        var y = 0
+        var one = 0
+        var two = 0
+        var three = 0
+        var four = 0
+        var five = 0
         
         if savedAnswer.questionAnswer1 == correctAnswerArray[0] {
-            v = 1
+            one = 1
         }
         if savedAnswer.questionAnswer2 == correctAnswerArray[1] {
-            w = 1
+            two = 1
         }
         if savedAnswer.questionAnswer3 == correctAnswerArray[2] {
-            x = 1
+            three = 1
         }
         if savedAnswer.questionAnswer4 == correctAnswerArray[3] {
-            y = 1
+            four = 1
+        }
+        if savedAnswer.questionAnswer5 == correctAnswerArray[4] {
+            five = 1
         }
         
-        var z = Double(v + w + x + y)
+        var z = Double(one + two + three + four + five)
         finalScore = Double((z / 4) * 100)
         print(finalScore)
         
@@ -274,7 +286,7 @@ class javaQViewController: UIViewController {
     
     func endTimer() {
         countdownTimer.invalidate()
-        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! cplusplusQViewController
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! userViewController
         self.present(nextViewController, animated: true, completion: nil)
     }
     

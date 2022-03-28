@@ -190,15 +190,6 @@ and password</string>
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f6T-gt-VBE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IB-K8-dDk" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="71" y="668" width="279" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="FB Button"/>
-                                <connections>
-                                    <action selector="loginfb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9D9-6P-Rax"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6x-yC-zti">
                                 <rect key="frame" x="255" y="455" width="123" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -218,6 +209,15 @@ and password</string>
                                     <action selector="subCheck:" destination="BYZ-38-t0r" eventType="valueChanged" id="xa8-ro-cJR"/>
                                 </connections>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9IB-K8-dDk" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="56" y="666" width="279" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="FB Button"/>
+                                <connections>
+                                    <action selector="loginfb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9D9-6P-Rax"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -1063,7 +1063,7 @@ you like to take?</string>
                                     <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="saveAnswer1:" destination="151-X4-LMc" eventType="touchUpInside" id="7KW-VY-6kE"/>
+                                    <action selector="saveAnswer:" destination="151-X4-LMc" eventType="touchUpInside" id="T5c-4I-bW5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1p0-Y1-S8g">
@@ -1209,7 +1209,7 @@ and start speaking.</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="e5D-5l-v1x"/>
-        <segue reference="qtX-J3-Oa5"/>
+        <segue reference="Wbx-gc-Cje"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">

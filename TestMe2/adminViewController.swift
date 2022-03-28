@@ -54,7 +54,7 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         ncont.subtitle = "From TestMe App"
         ncont.body = "A new quiz has been created, please come try it!"
         
-        let ntrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+        let ntrigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.0, repeats: false)
         let nreq = UNNotificationRequest(identifier: "User_Local_notification", content: ncont, trigger: ntrigger)
         
         UNUserNotificationCenter.current().add(nreq) { err in
@@ -64,7 +64,7 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotificationSound, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner])
     }
     
@@ -130,3 +130,4 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         self.present(dialogMessage, animated: true, completion: nil)
     }
 }
+

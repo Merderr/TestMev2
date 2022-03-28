@@ -36,6 +36,7 @@ class Answers {
     var questionAnswer2 : String = ""
     var questionAnswer3 : String = ""
     var questionAnswer4 : String = ""
+    var questionAnswer5 : String = ""
     
     init(){
         
