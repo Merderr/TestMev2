@@ -28,7 +28,7 @@ class cplusplusQViewController: UIViewController {
     let q4CorrectAnswer: String = "D"
     let q5CorrectAnswer: String = "A"
     
-    let correctAnswerArray = ["A","B","C","D"]
+    let correctAnswerArray = ["D","C","B","D","A","D","C","C","D","C","D","C","D","A","D"]
     var answersArray = ["","","",""]
     let savedAnswer = Answers()
     
@@ -290,6 +290,8 @@ class cplusplusQViewController: UIViewController {
     
     func endTimer() {
         countdownTimer.invalidate()
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! cplusplusQViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
     func timeFormatted(_ totalSeconds: Int) -> String {

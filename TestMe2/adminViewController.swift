@@ -117,21 +117,16 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
                         }
                         print(err)
                     }
-                    //if sqlite3_bind_text(stmt, 1, blocked, -1, nil) != SQLITE_OK {
-                    //  let err = String(cString: sqlite3_errmsg(db)!)
-                    //   print(err)
-                    //
-                    //}
-                    //if sqlite3_step(stmt) != SQLITE_DONE {
-                    //   let err = String(cString: sqlite3_errmsg(db)!)
-                    //    print(err)
-                    //}
                     sqlite3_finalize(stmt)
-                    
-                    
                 }
-                
             }
         }
+        var dialogMessage = UIAlertController(title: "Attention", message: "User has been blocked!", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler:  {
+            (action) -> Void in
+            print("Ok button tapped")
+        })
+        dialogMessage.addAction(ok)
+        self.present(dialogMessage, animated: true, completion: nil)
     }
 }

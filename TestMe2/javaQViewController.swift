@@ -27,7 +27,7 @@ class javaQViewController: UIViewController {
     let q4CorrectAnswer: String = "D"
     let q5CorrectAnswer: String = "A"
     
-    let correctAnswerArray = ["A","B","C","D"]
+    let correctAnswerArray = ["A","A","C","D","D","D","C","A","A","D","A","B","C","D","C"]
     var answersArray = ["","","",""]
     let savedAnswer = Answers()
     
@@ -179,11 +179,6 @@ class javaQViewController: UIViewController {
         var z = Double(v + w + x + y)
         finalScore = Double((z / 4) * 100)
         print(finalScore)
-        
-        
-        
-        
-        
         
         //puts final score into user table
         

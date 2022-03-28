@@ -27,8 +27,8 @@ class swiftQViewController: UIViewController {
     let q3CorrectAnswer: String = "C"
     let q4CorrectAnswer: String = "D"
     let q5CorrectAnswer: String = "A"
-    
-    let correctAnswerArray = ["A","B","C","D"]
+    	
+    let correctAnswerArray = ["B","A","A","D","D","D","C","A","C","D","C","D","D","D"]
     var answersArray = ["","","",""]
     let savedAnswer = Answers()
     
