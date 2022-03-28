@@ -144,7 +144,7 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.lineBreakMode = .byWordWrapping
-            cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + "\n" + "C++ Score: " + String(userList[indexPath.row].cplusplusScore) + "\n" + "Swift Score: " + String(userList[indexPath.row].swiftScore) + "\n" + "Java Score: " + String(userList[indexPath.row].javaScore)
+            cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + "\n" + "Java Score: " + String(userList[indexPath.row].javaScore) + "\n" + "Swift Score: " +  String(userList[indexPath.row].swiftScore) + "\n" + "C++ Score: " + String(userList[indexPath.row].cplusplusScore)
             return cell
             
         }

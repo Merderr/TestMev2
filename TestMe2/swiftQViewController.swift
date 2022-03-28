@@ -74,7 +74,7 @@ class swiftQViewController: UIViewController {
             let ansD = String(cString: sqlite3_column_text(stmt, 5))
             let qAns = String(cString: sqlite3_column_text(stmt, 6))
             quesList.append(Questions(questionNumber: number, questionText: question, questionChoiceA: ansA, questionChoiceB: ansB, questionChoiceC: ansC, questionChoiceD: ansD, questionAnswer: qAns))
-            NumberLabel.text! = number
+            NumberLabel.text! = number + " of 15"
             testQuestion.text! = question
             AnsA.text! = ansA
             AnsB.text! = ansB

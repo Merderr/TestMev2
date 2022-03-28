@@ -184,8 +184,6 @@ class javaQViewController: UIViewController {
         
         let javafinalScore = finalScore as! NSNumber
         
-        
-        
         let finalscorequery = "insert into TempVariables (javaScoretemp) values (?)"
         
         if sqlite3_prepare_v2(db,finalscorequery,-1,&stmt,nil) != SQLITE_OK {
@@ -193,7 +191,7 @@ class javaQViewController: UIViewController {
             print(err)
         }
        
-        if sqlite3_bind_int(stmt, 9, Int32(javafinalScore.uint32Value)) != SQLITE_OK {
+        if sqlite3_bind_int(stmt, 1, Int32(javafinalScore.uint32Value)) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print(err)
             
