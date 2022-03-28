@@ -58,6 +58,12 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBOutlet weak var sendtoJava: UIButton!
+    func enableButton() {
+        self.sendtoJava.isEnabled = true
+    }
+    
+    
     @IBAction func LogoutButton(_ sender: Any) {
         var stmt : OpaquePointer?
         let query = "delete from TempVariables"
@@ -75,9 +81,12 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    
     @IBAction func sendtoJava(_ sender: UIButton) {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
         self.present(nextViewController, animated: true, completion: nil)
+        self.sendtoJava.isEnabled = false
+        Timer.scheduledTimer(timeInterval: 86400, target: self, selector: "enableButton", userInfo: nil, repeats: false)
     }
     
     
@@ -103,8 +112,11 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].javaScore)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + "\n" + "C++ Score: " + String(userList[indexPath.row].cplusplusScore) + "\n" + "Swift Score: " + String(userList[indexPath.row].swiftScore) + "\n" + "Java Score: " + String(userList[indexPath.row].javaScore)
         return cell
+        
     }
 
 }

@@ -281,6 +281,8 @@ class javaQViewController: UIViewController {
     
     func endTimer() {
         countdownTimer.invalidate()
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userView") as! cplusplusQViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
     func timeFormatted(_ totalSeconds: Int) -> String {

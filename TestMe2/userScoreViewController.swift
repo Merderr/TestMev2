@@ -56,16 +56,11 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userScoreTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let cell2 = userScoreTable.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
-        let cell3 = userScoreTable.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
-        cell.textLabel?.text = "Username: " + user[indexPath.row].Username! + ", C++ Score:" + String(user[indexPath.row].cplusplusScore)
-        
-        cell2.textLabel?.text = "Username: " + user[indexPath.row].Username! + ", Swift Score:" + String(user[indexPath.row].swiftScore)
-        
-        cell3.textLabel?.text = "Username: " + user[indexPath.row].Username! + ", Java Score:" + String(user[indexPath.row].javaScore)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.text = "Username: " + user[indexPath.row].Username! + "\n" + "C++ Score: " + String(user[indexPath.row].cplusplusScore) + "\n" + "Swift Score: " + String(user[indexPath.row].swiftScore) + "\n" + "Java Score: " + String(user[indexPath.row].javaScore)
         return cell
     }
     
+    
 }
-
-

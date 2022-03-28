@@ -118,20 +118,20 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
                         print(err)
                     }
                     //if sqlite3_bind_text(stmt, 1, blocked, -1, nil) != SQLITE_OK {
-                     //  let err = String(cString: sqlite3_errmsg(db)!)
-                     //   print(err)
+                    //  let err = String(cString: sqlite3_errmsg(db)!)
+                    //   print(err)
                     //
                     //}
                     //if sqlite3_step(stmt) != SQLITE_DONE {
-                     //   let err = String(cString: sqlite3_errmsg(db)!)
+                    //   let err = String(cString: sqlite3_errmsg(db)!)
                     //    print(err)
                     //}
                     sqlite3_finalize(stmt)
-                
-                
+                    
+                    
                 }
-        
-    }
-}
+                
+            }
+        }
     }
 }

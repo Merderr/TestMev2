@@ -99,8 +99,10 @@ class DBHelper
                 let pass = String(describing: String(cString: sqlite3_column_text(queryStatement, 5)))
                 let blocked = String(describing: String(cString: sqlite3_column_text(queryStatement, 6)))
                 let sub = sqlite3_column_int(queryStatement, 7)
-                let score = sqlite3_column_int(queryStatement, 8)
-                psns.append(User(ID: Int(id), Email: String(email), FirstName: String(fName), LastName: String(lName), Username: String(userName), Password: String(pass), Subscription: Int(sub), Blocked: blocked, Score: Int(score)))
+                let cplusplusscore = sqlite3_column_int(queryStatement, 8)
+                let swiftscore = sqlite3_column_int(queryStatement, 9)
+                let javascore = sqlite3_column_int(queryStatement, 10)
+                psns.append(User(ID: Int(id), Email: email, FirstName: fName, LastName: lName, Username: userName, Password: pass, Subscription: Int(sub), Blocked: blocked, cplusplusScore: Int(cplusplusscore), swiftScore: Int(swiftscore), javaScore: Int(javascore)))
                 print("Query Result:")
                 print("\(id) | \(email) | \(sub)")
             }
