@@ -222,8 +222,6 @@ class javaQViewController: UIViewController {
             print(err)
             
         }
-        
-        
     }
     
     @IBAction func ViewNext(_ sender: Any) {

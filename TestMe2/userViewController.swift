@@ -81,9 +81,7 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    
     @IBAction func sendtoJava(_ sender: UIButton) {
-        sender.preventRepeatedPresses()
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
         self.present(nextViewController, animated: true, completion: nil)
     }
@@ -114,13 +112,6 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].Score)
         return cell
     }
+
 }
 
-extension UIButton {
-    func preventRepeatedPresses(inNext seconds: Double = 15) {
-        self.isUserInteractionEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            self.isUserInteractionEnabled = true
-        }
-    }
-}
