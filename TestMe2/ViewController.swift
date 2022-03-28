@@ -72,7 +72,7 @@ class ViewController: UIViewController, LoginButtonDelegate {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }
-        if sqlite3_exec(db, "create table if not exists TempVariables (ID INTEGER primary key autoincrement,Fnametemp TEXT,Lnametemp TEXT, Emailtemp TEXT,tempUser TEXT, tempPass TEXT, Subscriptiontemp integer, Blocked text, cplusplusScoretemp integer, swiftScoretemp integer, javaScoretemp integer)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "create table if not exists TempVariables (ID INTEGER primary key,Fnametemp TEXT,Lnametemp TEXT, Emailtemp TEXT,tempUser TEXT, tempPass TEXT, Subscriptiontemp integer, Blocked TEXT, cplusplusScoretemp INTEGER, swiftScoretemp INTEGER, javaScoretemp INTEGER)", nil, nil, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("no error",err)
         }

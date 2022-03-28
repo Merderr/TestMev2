@@ -25,15 +25,6 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("cant open data base")
         }
         
-        if sqlite3_exec(db, "create table if not exists User (ID integer primary key autoincrement,Fname text,Lname text, Email text,Username text, Password Text, Subscription integer)", nil, nil, nil) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print("no error",err)
-        }
-        if sqlite3_exec(db, "create table if not exists TempVariables (tempUser text primary key, tempPass text)", nil, nil, nil) != SQLITE_OK {
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print("no error",err)
-        }
-        
         let query = "select * from User inner join TempVariables on TempVariables.tempUser = User.Username; inner join TempVariables on TempVariables.tempPass = User.Password"
         
         
