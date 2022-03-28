@@ -38,14 +38,17 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
             let id = sqlite3_column_int(stmt, 0)
             let firstN = String(cString: sqlite3_column_text(stmt, 1))
             let lastN = String(cString: sqlite3_column_text(stmt, 2))
-            let eMail = String(cString: sqlite3_column_text(stmt, 3))
+            let email = String(cString: sqlite3_column_text(stmt, 3))
             let userN = String(cString: sqlite3_column_text(stmt, 4))
             let passW = String(cString: sqlite3_column_text(stmt, 5))
-            let blocked = String(cString: sqlite3_column_text(stmt, 6))
-            let subS = sqlite3_column_int(stmt, 7)
-            let score = sqlite3_column_int(stmt, 8)
+            let subS = sqlite3_column_int(stmt, 6)
+            let blocked = String(cString: sqlite3_column_text(stmt, 7))
+            let cplusplusscore = sqlite3_column_int(stmt, 8)
+            let swiftscore = sqlite3_column_int(stmt, 9)
+            let javascore = sqlite3_column_int(stmt, 10)
+            userList.append(User(ID: Int(id), Email: email, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, cplusplusScore: Int(cplusplusscore), swiftScore: Int(swiftscore), javaScore: Int(javascore)))
 
-            userList.append(User(ID: Int(id), Email: eMail, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, Score: Int(score)))
+           
             welcome.text = (firstN)
             //for u in userList{
               //  if (u.Subscription != 1){
@@ -100,7 +103,7 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].Score)
+        cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + ", Score:" + String(userList[indexPath.row].javaScore)
         return cell
     }
 

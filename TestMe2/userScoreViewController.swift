@@ -36,9 +36,10 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let id = sqlite3_column_int(stmt, 0)
             let Uname = String(cString: sqlite3_column_text(stmt, 4))
-            let score = sqlite3_column_int(stmt, 8)
-            
-            user.append(User(ID: Int(id), Email: "", FirstName: "", LastName: "", Username: Uname, Password: "", Subscription: 0, Blocked: "", Score: Int(score)))
+            let cplusplusscore = sqlite3_column_int(stmt, 8)
+            let swiftscore = sqlite3_column_int(stmt, 9)
+            let javascore = sqlite3_column_int(stmt, 10)
+            user.append(User(ID: Int(id), Email: "", FirstName: "", LastName: "", Username: Uname, Password: "", Subscription: 0, Blocked: "", cplusplusScore: Int(cplusplusscore), swiftScore: Int(swiftscore), javaScore: Int(javascore)))
         }
         
         self.userScoreTable.reloadData()
@@ -55,7 +56,13 @@ class userScoreViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = userScoreTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Userame: " + user[indexPath.row].Username! + ", Score:" + String(user[indexPath.row].Score)
+        let cell2 = userScoreTable.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
+        let cell3 = userScoreTable.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
+        cell.textLabel?.text = "Username: " + user[indexPath.row].Username! + ", C++ Score:" + String(user[indexPath.row].cplusplusScore)
+        
+        cell2.textLabel?.text = "Username: " + user[indexPath.row].Username! + ", Swift Score:" + String(user[indexPath.row].swiftScore)
+        
+        cell3.textLabel?.text = "Username: " + user[indexPath.row].Username! + ", Java Score:" + String(user[indexPath.row].javaScore)
         return cell
     }
     

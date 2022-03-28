@@ -16,10 +16,12 @@ class User{
     var Password : String?
     var Subscription : Int
     var Blocked : String?
-    var Score : Int
+    var cplusplusScore : Int
+    var swiftScore : Int
+    var javaScore : Int
     
     
-    init(ID: Int , Email : String ,FirstName : String ,LastName : String , Username : String , Password : String , Subscription : Int, Blocked : String, Score: Int){
+    init(ID: Int , Email : String ,FirstName : String ,LastName : String , Username : String , Password : String , Subscription : Int, Blocked : String, cplusplusScore: Int,swiftScore: Int, javaScore: Int){
         self.ID = ID
         self.Email = Email
         self.FirstName = FirstName
@@ -28,6 +30,8 @@ class User{
         self.Password = Password
         self.Subscription = Subscription
         self.Blocked = Blocked
-        self.Score = Score
+        self.cplusplusScore = cplusplusScore
+        self.swiftScore = swiftScore
+        self.javaScore = javaScore
     }
 }
