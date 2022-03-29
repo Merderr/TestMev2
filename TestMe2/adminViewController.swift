@@ -4,7 +4,6 @@
 //
 //  Created by admin on 3/16/22.
 //
-//new code
 
 import UIKit
 import UserNotifications
@@ -12,13 +11,19 @@ import SQLite3
 
 class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
     
+    @IBOutlet weak var userToBlock: UITextField!
+    
+    //Create parameter variables for SQLite database connection and queries
     var user = [User]()
     var db : OpaquePointer?
     
-    @IBOutlet weak var userToBlock: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Assigning User Notification
         UNUserNotificationCenter.current().delegate = self
+        
+        //Open SQlite file
         let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
         print("db path is ", fileP)
         
@@ -27,6 +32,7 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
     
+    //Send notification to user via banner
     @IBAction func sendNotif(_ sender: Any) {
         UNUserNotificationCenter.current().getNotificationSettings{ notifS in
             switch notifS.authorizationStatus {
@@ -48,6 +54,7 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
     
+    //Create notification message, timer and trigger
     func generateNotification(){
         let ncont = UNMutableNotificationContent()
         ncont.title = "Test"
@@ -68,12 +75,13 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         completionHandler([.banner])
     }
     
+    //Send admin to user score ranking table
     @IBAction func userScoreView(_ sender: Any) {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "userScore") as! userScoreViewController
         self.present(nextViewController, animated: true, completion: nil)
     }
     
-    
+    //Block user via email by typing in text box
     @IBAction func blockUser(_ sender: Any) {
         var queryStatement: OpaquePointer?
         var stmt : OpaquePointer?
@@ -121,6 +129,8 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
                 }
             }
         }
+        
+        //Send dialog to admin to let user has been blcoked
         var dialogMessage = UIAlertController(title: "Attention", message: "User has been blocked!", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler:  {
             (action) -> Void in
@@ -130,4 +140,3 @@ class adminViewController: UIViewController, UNUserNotificationCenterDelegate {
         self.present(dialogMessage, animated: true, completion: nil)
     }
 }
-

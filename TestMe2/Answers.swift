@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Question struct and setting to default values
 class Questions {
     
     var questionNumber : String = ""
@@ -17,6 +18,7 @@ class Questions {
     var questionChoiceD : String = ""
     var questionAnswer : String = ""
     
+    //Initialize question struct
     init(questionNumber : String, questionText : String, questionChoiceA : String, questionChoiceB : String, questionChoiceC : String, questionChoiceD : String, questionAnswer : String){
         
         self.questionNumber = questionNumber
@@ -26,10 +28,10 @@ class Questions {
         self.questionChoiceC = questionChoiceC
         self.questionChoiceD = questionChoiceD
         self.questionAnswer = questionAnswer
-        
     }
 }
 
+//Answer struct that creates variable for question answers
 class Answers {
     
     var questionAnswer1 : String = ""
@@ -37,9 +39,17 @@ class Answers {
     var questionAnswer3 : String = ""
     var questionAnswer4 : String = ""
     var questionAnswer5 : String = ""
+    var questionAnswer6 : String = ""
+    var questionAnswer7 : String = ""
+    var questionAnswer8 : String = ""
+    var questionAnswer9 : String = ""
+    var questionAnswer10 : String = ""
+    var questionAnswer11 : String = ""
+    var questionAnswer12 : String = ""
+    var questionAnswer13 : String = ""
+    var questionAnswer14 : String = ""
+    var questionAnswer15 : String = ""
     
     init(){
-        
     }
-    
 }

@@ -3,11 +3,12 @@
 //  Project2
 //
 //  Created by admin on 3/14/22.
-//test
-
+//
 
 import Foundation
-class User{
+
+//Create struct for User
+class User {
     var ID : Int
     var Email : String?
     var FirstName : String?
@@ -20,7 +21,7 @@ class User{
     var swiftScore : Int
     var javaScore : Int
     
-    
+    //Initialize user to default values
     init(ID: Int , Email : String ,FirstName : String ,LastName : String , Username : String , Password : String , Subscription : Int, Blocked : String, cplusplusScore: Int,swiftScore: Int, javaScore: Int){
         self.ID = ID
         self.Email = Email

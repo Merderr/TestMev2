@@ -8,10 +8,9 @@
 import Foundation
 import SQLite3
 
-class DBHelper
-{
-    init()
-    {
+//Standard DBHelper class
+class DBHelper{
+    init(){
         db = openDatabase()
         createTable()
     }
@@ -19,8 +18,7 @@ class DBHelper
     let dbPath: String = "UserDB.sqlite"
     var db: OpaquePointer?
     
-    func openDatabase() -> OpaquePointer?
-    {
+    func openDatabase() -> OpaquePointer? {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent(dbPath)
         var db: OpaquePointer? = nil
@@ -39,10 +37,8 @@ class DBHelper
     func createTable() {
         let createTableString = "CREATE TABLE IF NOT EXISTS user(ID INTEGER PRIMARY KEY,email TEXT, firstname TEXT, lastname TEXT, username TEXT, password TEXT, subscription INTEGER);"
         var createTableStatement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
-        {
-            if sqlite3_step(createTableStatement) == SQLITE_DONE
-            {
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
                 print("user score table created.")
             } else {
                 print("user score table could not be created.")
@@ -128,5 +124,4 @@ class DBHelper
         }
         sqlite3_finalize(deleteStatement)
     }
-    
 }

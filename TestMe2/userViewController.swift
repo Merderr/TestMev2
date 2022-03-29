@@ -10,12 +10,18 @@ import SQLite3
 
 class userViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //Outlet references for view controller controls. Data to be captured for SQLite read/write purposes
     @IBOutlet weak var userRankingView: UITableView!
     @IBOutlet weak var welcome: UILabel!
+    
+    //Variable to limit user quizzes
     var count: Int = 0
-    var userList = [User]()
+    
+    //Create parameter variables for SQLite database connection and queries
     var stmt : OpaquePointer?
     var db : OpaquePointer?
+    var userList = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let fileP = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("UserDB.sqlite")
@@ -103,51 +109,48 @@ class userViewController: UIViewController, UITableViewDelegate, UITableViewData
             userList.append(User(ID: Int(id), Email: email, FirstName: firstN, LastName: lastN, Username: userN, Password: passW, Subscription: Int(subS), Blocked: blocked, cplusplusScore: Int(cplusplusscore), swiftScore: Int(swiftscore), javaScore: Int(javascore)))
             
             for u in userList {
-                    if count < 2 && u.Subscription == 0{
-                        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
-                        self.present(nextViewController, animated: true, completion: nil)
-                        self.sendtoJava.isEnabled = false
-                        count += 1
-                        print(count)
-            } else if count == 2 {
-                Timer.scheduledTimer(timeInterval: 86400, target: self, selector: "enableButton", userInfo: nil, repeats: false)
-            } else {
-                let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
-                self.present(nextViewController, animated: true, completion: nil)
+                if count < 2 && u.Subscription == 0{
+                    let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
+                    self.present(nextViewController, animated: true, completion: nil)
+                    self.sendtoJava.isEnabled = false
+                    count += 1
+                    print(count)
+                } else if count == 2 {
+                    Timer.scheduledTimer(timeInterval: 86400, target: self, selector: "enableButton", userInfo: nil, repeats: false)
+                } else {
+                    let nextViewController = storyboard?.instantiateViewController(withIdentifier: "javaQuiz") as! javaQViewController
+                    self.present(nextViewController, animated: true, completion: nil)
+                }
             }
         }
     }
-    }
-        
-        
-        @IBAction func sendtoSwift(_ sender: Any) {
-            let nextViewController = storyboard?.instantiateViewController(withIdentifier: "swiftQuiz") as! swiftQViewController
-            self.present(nextViewController, animated: true, completion: nil)
-        }
-        
-        @IBAction func sendtoCPlusPlus(_ sender: Any) {
-            let nextViewController = storyboard?.instantiateViewController(withIdentifier: "cplusplusQuiz") as! cplusplusQViewController
-            self.present(nextViewController, animated: true, completion: nil)
-        }
-        
-        
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableView.automaticDimension
-        }
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-        {
-            return userList.count
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.lineBreakMode = .byWordWrapping
-            cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + "\n" + "Java Score: " + String(userList[indexPath.row].javaScore) + "\n" + "Swift Score: " +  String(userList[indexPath.row].swiftScore) + "\n" + "C++ Score: " + String(userList[indexPath.row].cplusplusScore)
-            return cell
-            
-        }
-        
+    
+    
+    @IBAction func sendtoSwift(_ sender: Any) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "swiftQuiz") as! swiftQViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
+    @IBAction func sendtoCPlusPlus(_ sender: Any) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "cplusplusQuiz") as! cplusplusQViewController
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return userList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = userRankingView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.text = "Username: " + userList[indexPath.row].Username! + "\n" + "Java Score: " + String(userList[indexPath.row].javaScore) + "\n" + "Swift Score: " +  String(userList[indexPath.row].swiftScore) + "\n" + "C++ Score: " + String(userList[indexPath.row].cplusplusScore)
+        return cell
+    }
+}
+

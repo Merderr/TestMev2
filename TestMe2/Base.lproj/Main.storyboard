@@ -145,7 +145,7 @@ and password</string>
                                 <rect key="frame" x="40" y="145" width="303" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Please sign up or sign in">
+                                    <fragment content="Please sign up or sign in below">
                                         <attributes>
                                             <font key="NSFont" size="20" name="Noteworthy-Bold"/>
                                         </attributes>
@@ -1193,6 +1193,19 @@ and start speaking.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-7a-pg1">
+                                <rect key="frame" x="95" y="755" width="224" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back to user home page">
+                                    <fontDescription key="titleFontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="bFl-Bz-bhw" kind="show" id="MyU-7J-q7N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7VF-50-H5n"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>

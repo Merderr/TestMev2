@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import Foundation
 
 class Validate {
+    //Test for null text boxes
     func validation(email: String, user: String, pass: String, fname: String, lname: String) -> Bool {
         if (email != "") && (user != "") && (pass != "") && (fname != "") && (lname != "") {
             return true
@@ -17,3 +17,4 @@ class Validate {
         }
     }
 }
+
